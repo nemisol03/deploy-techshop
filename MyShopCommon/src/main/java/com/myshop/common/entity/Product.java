@@ -1,6 +1,8 @@
 package com.myshop.common.entity;
 
 import com.myshop.common.Constants;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.text.DecimalFormat;
@@ -55,8 +57,12 @@ public class Product {
 
 
     @Column(name = "created_at")
+//    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private LocalDateTime createdAt;
     @Column(name = "modified_at")
+//    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private LocalDateTime modifiedAt;
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<ProductImage> images = new HashSet<>();
@@ -84,18 +90,18 @@ public class Product {
         this.images = images;
     }
 
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        modifiedAt = createdAt;
-
-    }
-
-    @PreUpdate
-    protected void onUpdate() {
-        modifiedAt = LocalDateTime.now();
-
-    }
+//    @PrePersist
+//    protected void onCreate() {
+//        createdAt = LocalDateTime.now();
+//        modifiedAt = createdAt;
+//
+//    }
+//
+//    @PreUpdate
+//    protected void onUpdate() {
+//        modifiedAt = LocalDateTime.now();
+//
+//    }
 
     public Product() {
     }
@@ -241,6 +247,16 @@ public class Product {
     public String getShortName() {
         if (name.length() > 70) return name.substring(0, 70).concat("...");
         return name;
+    }
+
+    @Transient
+    public String getBrandName(){
+        return brand.getName();
+    }
+
+    @Transient
+    public String getCategoryName() {
+        return category.getName();
     }
 
     public void addExtraImage(String name, Product product) {

@@ -84,7 +84,7 @@
     "git-widget-placeholder": "d4cb995d",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/workspace/java/tech-shop-master",
+    "last_opened_file_path": "D:/workspace/java/blog",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -346,7 +346,7 @@
       <workItem from="1708768762294" duration="2628000" />
       <workItem from="1708837303086" duration="640000" />
       <workItem from="1708841976165" duration="335000" />
-      <workItem from="1708871254663" duration="3815000" />
+      <workItem from="1708871254663" duration="7675000" />
     </task>
     <task id="LOCAL-00001" summary="push first">
       <created>1695215767212</created>
@@ -488,6 +488,11 @@
           <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/customer/CustomerService.java</url>
           <line>86</line>
           <option name="timeStamp" value="36" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopBackend/src/main/java/com/myshop/admin/product/ProductController.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="37" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

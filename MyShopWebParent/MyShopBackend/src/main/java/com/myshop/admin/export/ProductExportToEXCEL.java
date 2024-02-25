@@ -92,8 +92,8 @@ public class ProductExportToEXCEL extends AbstractExporter{
             createCell(row,columnIndex++,product.getDiscountPercent(),cellStyle);
             createCell(row,columnIndex++,product.getBrand().getName(),cellStyle);
             createCell(row,columnIndex++,product.getCategory().getName(),cellStyle);
-            createCell(row,columnIndex++,product.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd _ HH:mm:ss")),cellStyle);
-            createCell(row,columnIndex++,product.getUpdatedAt(),cellStyle);
+            createCell(row,columnIndex++,product.getCreatedAt() !=null ? product.getCreatedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd _ HH:mm:ss")) : null,cellStyle);
+            createCell(row,columnIndex++,product.getUpdatedAt() != null ? product.getModifiedAt().format(DateTimeFormatter.ofPattern("yyyy-MM-dd _ HH:mm:ss")) : null,cellStyle);
 
         }
     }

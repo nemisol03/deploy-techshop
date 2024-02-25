@@ -1,6 +1,8 @@
 package com.myshop.common.entity;
 
 import com.myshop.common.Constants;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -45,6 +47,9 @@ public class Customer {
     @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Address> addressList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "customer",cascade = CascadeType.ALL,orphanRemoval = true)
+    private List<CartItem> cartItems = new ArrayList<>();
+
 
 
 
@@ -52,20 +57,24 @@ public class Customer {
 
 
     @Column(name = "created_at")
+//    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     private LocalDateTime createdAt;
     @Column(name = "modified_at")
+//    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     private LocalDateTime modifiedAt;
 
-
-    @PrePersist
-    protected void onCreate() {
-        createdAt = LocalDateTime.now();
-        modifiedAt = createdAt;
-    }
-    @PreUpdate
-    protected void onUpdate() {
-        modifiedAt = LocalDateTime.now();
-    }
+//
+//    @PrePersist
+//    protected void onCreate() {
+//        createdAt = LocalDateTime.now();
+//        modifiedAt = createdAt;
+//    }
+//    @PreUpdate
+//    protected void onUpdate() {
+//        modifiedAt = LocalDateTime.now();
+//    }
 
     public Customer() {
     }
@@ -162,8 +171,12 @@ public class Customer {
         return createdAt;
     }
     public String getCreatedAtStr() {
+        String timestamp = "";
+        if(createdAt!=null) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd - HH:mm:ss");
-        String timestamp = formatter.format(createdAt);
+         timestamp = formatter.format(createdAt);
+
+        }
         return timestamp;
     }
 

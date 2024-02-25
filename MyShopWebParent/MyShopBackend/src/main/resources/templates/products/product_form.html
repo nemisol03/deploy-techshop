@@ -9,7 +9,7 @@
 <div th:replace="navigation :: content('/products',false)"></div>
 
 <div class="container mt-3 " style="max-width: 1000px">
-    <form th:action="@{/templates/products/save}" th:object="${product}" method="post" class="form  form--xxl "
+    <form th:action="@{/products/save}" th:object="${product}" method="post" class="form  form--xxl "
           enctype="multipart/form-data"
           onsubmit="return checkUniqueProduct(this)">
         <input type="hidden" th:field="*{id}">

@@ -10,9 +10,9 @@
 <div class="container-fluid mt-5">
 
     <div class="actions" sec:authorize="hasAnyAuthority('Admin','Editor')">
-        <a th:href="@{/templates/products/create_new}" title="Create new product"><i class="fa-solid fa-circle-plus"></i></a> &nbsp; &nbsp;
-        <a th:href="@{/templates/products/export_csv}" title="Export to CSV"><i class="fa-solid fa-file-csv"></i></a> &nbsp;&nbsp;
-        <a th:href="@{/templates/products/export_excel}" title="Export to EXCEL"><i class="fa-solid fa-file-excel"></i></a> &nbsp;
+        <a th:href="@{/products/create_new}" title="Create new product"><i class="fa-solid fa-circle-plus"></i></a> &nbsp; &nbsp;
+        <a th:href="@{/products/export_csv}" title="Export to CSV"><i class="fa-solid fa-file-csv"></i></a> &nbsp;&nbsp;
+        <a th:href="@{/products/export_excel}" title="Export to EXCEL"><i class="fa-solid fa-file-excel"></i></a> &nbsp;
     </div>
     <div>
         <div th:if="${message_success!=null}" class="alert alert-success text-center" role="alert">
