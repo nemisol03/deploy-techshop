@@ -9,13 +9,13 @@ import java.nio.file.*;
 
 public class FileUploadUtils {
 
-    public static void saveFile(String dirName, String fileName, MultipartFile multipartFile) {
-        Path path = Paths.get(dirName);
+    public static void saveFile(String dir, String fileName, MultipartFile multipartFile) {
+        Path path = Paths.get(dir);
         if (!Files.exists(path)) {
             try {
                 Files.createDirectories(path);
             } catch (IOException e) {
-                System.out.println("Could not create directory: " + dirName);
+                System.out.println("Could not create directory: " + dir);
             }
         }
         try (InputStream fis = multipartFile.getInputStream()) {
