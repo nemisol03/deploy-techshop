@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head('Login page','none')"></head>
+<body class="bg-main " style="margin: auto">
+  <div class="container mt-lg-5 mt-md-5 mt-sm-3 " >
+    <form th:action="@{/login}" method="post" class="form ">
+
+        <div >
+            <p th:if="${param.error}" class="text-danger text-center">[[${session.SPRING_SECURITY_LAST_EXCEPTION.message}]]</p>
+            <p th:if="${param.logout}" class="text-info-emphasis text-center">You have been logout successfully!</p>
+        </div>
+
+
+        <h3 class="form-heading ">Sign in</h3>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+            </div>
+            <div class="mb-3">
+              <label for="password" class="form-label">Password</label>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Your password...">
+            <div class="mb-3 mt-3 form-check" style="margin-left: 0">
+                <input type="checkbox" class="form-check-input" name="remember-me" id="remember-me" >
+                <label class="form-check-label" for="remember-me">Remember me</label>
+              </div>
+            </div>
+
+
+              <button type="submit" class="form-btn">Login now</button>
+
+          
+    </form>
+  </div>
+</body>
+</html>

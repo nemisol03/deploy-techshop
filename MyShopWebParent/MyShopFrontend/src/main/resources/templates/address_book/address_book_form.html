@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments :: head(${pageTitle},'none')"></head>
+<body class="bg-main">
+<div th:replace="navigation :: content('/addresses',false)"></div>
+
+<div class="container">
+
+    <form th:action="@{/address_book/save}" th:object="${addressObj}" method="post" class="form form--lg">
+        <h3 class="form-heading">[[${pageTitle}]]</h3>
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{defaultForShipping}">
+        <div class="mb-3">
+            <label for="firstName" class="form-label">First name</label>
+            <input type="text" id="firstName" class="form-control"  placeholder="Eg: Doe" th:field="*{firstName}" required>
+        </div>
+        <div class="mb-3">
+            <label for="lastName" class="form-label">Last name</label>
+            <input type="text" id="lastName" class="form-control"  placeholder="Eg: John" th:field="*{lastName}" required>
+        </div>
+        <div class="mb-3">
+            <label for="phoneNumber" class="form-label">Phone number</label>
+            <input type="text" class="form-control " id="phoneNumber"  placeholder="phone number..." th:field="*{phoneNumber}"  >
+        </div>
+
+        <div class="mb-3">
+            <label for="address" class="form-label">Address</label>
+            <input type="text" class="form-control " id="address"   th:field="*{address}" >
+        </div>
+
+
+
+        <div class="divider-btn">
+            <button type="submit" class="form-btn form-btn--sm">Submit</button>
+            <button type="button" class="btn btn-secondary" style="padding: 10px 16px;margin-left: 20px;" id="btn-cancel">Cancel</button>
+        </div>
+
+
+    </form>
+</div>
+
+
+<div th:replace="fragments :: modal_notify"></div>
+
+<footer th:replace="fragments::footer"></footer>
+<script th:src="@{/js/common_form.js}"></script>
+
+<script>
+    var contextPath = "[[@{/}]]";
+    var currentLocation =  "[[@{/address_book}]]";
+
+
+</script>
+</body>
+</html>

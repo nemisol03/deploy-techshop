@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head></head>
+<body>
+
+<div th:fragment="content" class="container mt-3">
+
+
+        <div class="mb-3">
+            <label for="" class="form-label">Short description:</label>
+            <div class="form-control" th:utext="${product.shortDescription}"  style="opacity: 0.6;overflow: auto;"></div>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Full description:</label>
+            <div class="form-control" th:utext="${product.fullDescription}" style="opacity: 0.6;overflow: auto;" ></div>
+        </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments :: head(${pageTitle},'none')"></head>
+<body class="bg-main">
+<div th:replace="navigation :: content('/brands',false)"></div>
+
+<div class="container">
+
+    <form th:action="@{/brands/save}" th:object="${brand}" method="post" class="form form--lg" enctype="multipart/form-data" onsubmit="return checkUniqueBrand(this)">
+            <h3 class="form-heading">[[${pageTitle}]]</h3>
+        <input type="hidden" th:field="*{id}">
+            <div class="mb-3">
+                <label for="" class="form-label">Brand name</label>
+                <input type="text" class="form-control"  placeholder="Eg: Apple" th:field="*{name}" required>
+            </div>
+
+
+        <div class="mb-3">
+            <input type="hidden" th:field="*{logo}">
+            <label for="" class="form-label">Logo:</label>
+            <input type="file" class="form-control" id="thumb" name="fileImage"  >
+
+            <divc class="img_thumb-container">
+                <img th:src="@{${brand.imagePath}}" alt="preview image" class="img-thumb" id="image-thumb">
+            </divc>
+        </div>
+
+
+
+            <div class="mb-3">
+                <label  class="form-label">Categories:</label>
+                <select class="form-select" id="categories-dropdown" th:field="*{categories}" size="10" multiple >
+                    <th:block th:each="cate: ${categories}">
+                        <option th:value="${cate.id}">[[${cate.name}]]</option>
+                    </th:block>
+                </select>
+
+            </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Choose categories:</label>
+                <div id="choose_categories">
+
+                </div>
+
+        </div>
+
+           <div class="divider-btn">
+               <button type="submit" class="form-btn form-btn--sm">Submit</button>
+               <button type="button" class="btn btn-secondary" style="padding: 10px 16px;margin-left: 20px;" id="btn-cancel">Cancel</button>
+           </div>
+
+
+        </form>
+</div>
+
+
+<div th:replace="fragments :: modal_notify"></div>
+
+<footer th:replace="fragments::footer"></footer>
+<script th:src="@{/js/common_form.js}"></script>
+<script>
+    var contextPath = "[[@{/}]]";
+    var currentLocation =  "[[@{/brands}]]";
+    var csrfVal = $('input[name="_csrf"]').val();
+    $(document).ready(function () {
+        dropdown = $('#categories-dropdown');
+        chooseCategories = $('#choose_categories');
+        dropdown.change(function () {
+            chooseCategories.empty();
+            showChooseCategories();
+        })
+        showChooseCategories();
+    });
+
+    function showChooseCategories() {
+        dropdown.children('option:selected').each(function () {
+         selectedCategory = $(this)
+         cateName = selectedCategory.text().replaceAll('--','')
+         chooseCategories.append(`<span class="badge text-bg-secondary mt-1" style="margin-right: 8px">${cateName}</span>`)
+     })
+    }
+    function checkUniqueBrand(form) {
+        url = contextPath + "brands/check_unique";
+        brandId = $('#id').val();
+        brandName = $('#name').val();
+        params = {name:brandName,brandId: brandId,_csrf: csrfVal};
+
+        $.post(url,params,function (response) {
+            if(response ==='OK') {
+                form.submit();
+            }else if(response ==='duplicated'){
+                showModalNotify("Warning","This name already exists, please choose another name");
+            }else {
+                showModalNotify("Warning","Something went wrong!");
+
+            }
+
+        }).fail(function () {
+            showModalNotify("Error","Couldn't connect to server ! ");
+        })
+        return false;
+    }
+</script>
+
+</body>
+</html>

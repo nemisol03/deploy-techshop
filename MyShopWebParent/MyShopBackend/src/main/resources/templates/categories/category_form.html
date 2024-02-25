@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments :: head(${pageTitle},'none')"></head>
+<body class="bg-main">
+<div th:replace="navigation :: content('/categories',false)"></div>
+
+<div class="container">
+
+    <form th:action="@{/categories/save}" th:object="${category}" method="post" class="form form--lg"
+          enctype="multipart/form-data" onsubmit="return checkNameAndAlias(this)">
+        <h3 class="form-heading">[[${pageTitle}]]</h3>
+        <input type="hidden" th:field="*{id}">
+        <div class="mb-3">
+            <label for="" class="form-label">Category name</label>
+            <input type="text" class="form-control" placeholder="Eg: Computer" th:field="*{name}" required>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Alias</label>
+            <input type="text" class="form-control" placeholder="Eg: computer_com" th:field="*{alias}" required>
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Parent category:</label>
+            <select class="form-select" th:field="*{parent}">
+                <option value="0">-- No parent --</option>
+                <th:block th:each="cate: ${categories}">
+                    <option th:value="${cate.id}">[[${cate.name}]]</option>
+                </th:block>
+            </select>
+
+        </div>
+
+        <div class="mb-3 ">
+            <label class="form-label">Enabled:</label> <br>
+            <div class="mb-3 form-check ml-3">
+                <input type="checkbox" class="form-check-input" th:field="*{enabled}">
+                <label class="form-check-label" for="enabled">Enabled</label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <input type="hidden" th:field="*{image}">
+            <label for="" class="form-label">Photo:</label>
+            <input type="file" class="form-control" id="thumb" name="fileImage">
+
+            <divc class="img_thumb-container">
+                <img th:src="@{${category.imagePath}}" alt="preview image" class="img-thumb" id="image-thumb">
+            </divc>
+        </div>
+
+
+        <div class="divider-btn">
+            <button type="submit" class="form-btn form-btn--sm">Submit</button>
+            <button type="button" class="btn btn-secondary" style="padding: 10px 16px;margin-left: 20px;"
+                    id="btn-cancel">Cancel
+            </button>
+        </div>
+
+
+    </form>
+</div>
+
+
+<div th:replace="fragments :: modal_notify"></div>
+
+<footer th:replace="fragments::footer"></footer>
+<script th:src="@{/js/common_form.js}"></script>
+<script>
+    var contextPath = "[[@{/}]]";
+    var currentLocation = "[[@{/categories}]]";
+    var csrfValue = "[[${_csrf.token}]]"
+
+    function checkNameAndAlias(form) {
+        url = contextPath + "categories/check_unique";
+        categoryId = $('#id').val();
+        nameCate = $("#name").val();
+        aliasCate = $('#alias').val();
+        params = {id: categoryId, name: nameCate, alias: aliasCate, _csrf: csrfValue}
+
+        $.post(url, params, function (message) {
+            if (message === 'OK') {
+                form.submit();
+            }else if(message === 'duplicatedName') {
+                showModalNotify("Duplicated Name","Sorry, but the category's name has existed. Please choose another one");
+            }else if(message === 'duplicatedAlias') {
+                showModalNotify("Duplicated Alias","Sorry, but the category's alias has existed. Please choose another one");
+            }else {
+                showModalNotify("Error","Oops! Something went wrong")
+            }
+
+        }).fail(function () {
+            showModalNotify("Error","Couldn't connect to server");
+        });
+
+        return false;
+    }
+
+</script>
+</body>
+</html>

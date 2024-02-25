@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="377d3ae7-3cd0-42a8-acb0-7e40f972d135" name="Changes" comment="add Dockerfile" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="HTML File" />
+        <option value="Class" />
+        <option value="Dockerfile" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;
+  }
+}</component>
+  <component name="GitToolBoxStore">
+    <option name="projectConfigVersion" value="5" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="39f5dd47-f7a4-4941-a24f-603e85913318" />
+        <option name="url" value="https://github.com/alchemist-03/tech-shop.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 8
+}</component>
+  <component name="ProjectId" id="2VT077Uv95oWGEXuVVb5wh7ULZm" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "DefaultHtmlFileTemplate": "HTML File",
+    "JUnit.AddressRepositoryTests.testCreateNew.executor": "Run",
+    "JUnit.AddressRepositoryTests.testFindByCustomerId.executor": "Run",
+    "JUnit.AddressRepositoryTests.testFindByCustomerIdAndAddressId.executor": "Run",
+    "JUnit.CustomerRepositoryTests.testUpdateAuthenticationType.executor": "Run",
+    "JUnit.OrderRepositoryTests.addAnOrder.executor": "Run",
+    "Maven.MyShop [clean].executor": "Run",
+    "Maven.MyShop [install].executor": "Run",
+    "Maven.MyShop [package].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.MyShopBackendApplication.executor": "Run",
+    "Spring Boot.MyShopFrontendApplication.executor": "Run",
+    "WebServerToolWindowFactoryState": "false",
+    "extract.method.default.visibility": "private",
+    "git-widget-placeholder": "d4cb995d",
+    "jdk.selected.JAVA_MODULE": "17",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/workspace/java/tech-shop-master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "spring.configuration.checksum": "c5e7f535e80aa3d2f3bc9d4aa9d16269",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mariadb",
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.myshop.common.exception" />
+      <recent name="com.myshop.admin.category" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\workspace\java\tech-shop\MyShopWebParent\MyShopFrontend\src\main\resources\templates" />
+      <recent name="D:\workspace\java\tech-shop\MyShopWebParent\MyShopFrontend\src\main\java\com\myshop\site\order" />
+      <recent name="D:\workspace\java\tech-shop\MyShopWebParent\MyShopFrontend\src\main\resources\templates\address_book" />
+      <recent name="D:\workspace\java\tech-shop\MyShopWebParent\MyShopBackend\src\main\resources\templates\orders" />
+      <recent name="D:\workspace\java\tech-shop\MyShopWebParent\MyShopBackend\src\main\resources\templates" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\workspace\java\MyShop\MyShopWebParent\MyShopBackend\src\main\resources\static\images" />
+      <recent name="D:\workspace\java\MyShop\MyShopWebParent\MyShopFrontend\src\main\resources\templates\cart" />
+      <recent name="D:\workspace\java\MyShop\MyShopWebParent\MyShopFrontend\src\main\resources\static\images" />
+      <recent name="D:\workspace\java\MyShop\MyShopCommon\src\test\java" />
+      <recent name="D:\workspace\java\MyShop\MyShopWebParent\MyShopBackend\src\main\resources\static\css" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.myshop.site" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.myshop.site" />
+      <recent name="com.myshop.common.entity" />
+      <recent name="com.myshop.site.oauth" />
+      <recent name="com.myshop.admin.export" />
+      <recent name="com.myshop.admin.setting" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MyShopFrontendApplication">
+    <configuration name="main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main" />
+      <module name="MyShopCommon" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddressRepositoryTests.testCreateNew" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyShopFrontend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.myshop.site.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.myshop.site" />
+      <option name="MAIN_CLASS_NAME" value="com.myshop.site.AddressRepositoryTests" />
+      <option name="METHOD_NAME" value="testCreateNew" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddressRepositoryTests.testFindByCustomerId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyShopFrontend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.myshop.site.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.myshop.site" />
+      <option name="MAIN_CLASS_NAME" value="com.myshop.site.AddressRepositoryTests" />
+      <option name="METHOD_NAME" value="testFindByCustomerId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="AddressRepositoryTests.testFindByCustomerIdAndAddressId" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyShopFrontend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.myshop.site.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.myshop.site" />
+      <option name="MAIN_CLASS_NAME" value="com.myshop.site.AddressRepositoryTests" />
+      <option name="METHOD_NAME" value="testFindByCustomerIdAndAddressId" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CustomerRepositoryTests.testUpdateAuthenticationType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyShopFrontend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.myshop.site.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.myshop.site" />
+      <option name="MAIN_CLASS_NAME" value="com.myshop.site.CustomerRepositoryTests" />
+      <option name="METHOD_NAME" value="testUpdateAuthenticationType" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OrderRepositoryTests.addAnOrder" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="MyShopBackend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.myshop.admin.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.myshop.admin" />
+      <option name="MAIN_CLASS_NAME" value="com.myshop.admin.OrderRepositoryTests" />
+      <option name="METHOD_NAME" value="addAnOrder" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyShopBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="MyShopBackend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.myshop.admin.MyShopBackendApplication" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/MyShopWebParent/MyShopBackend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyShopFrontendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="MyShopFrontend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.myshop.site.MyShopFrontendApplication" />
+      <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$/MyShopWebParent/MyShopFrontend" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.main" />
+      <item itemvalue="JUnit.AddressRepositoryTests.testCreateNew" />
+      <item itemvalue="JUnit.AddressRepositoryTests.testFindByCustomerId" />
+      <item itemvalue="JUnit.AddressRepositoryTests.testFindByCustomerIdAndAddressId" />
+      <item itemvalue="JUnit.OrderRepositoryTests.addAnOrder" />
+      <item itemvalue="JUnit.CustomerRepositoryTests.testUpdateAuthenticationType" />
+      <item itemvalue="Spring Boot.MyShopBackendApplication" />
+      <item itemvalue="Spring Boot.MyShopFrontendApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.AddressRepositoryTests.testCreateNew" />
+        <item itemvalue="JUnit.AddressRepositoryTests.testFindByCustomerIdAndAddressId" />
+        <item itemvalue="JUnit.AddressRepositoryTests.testFindByCustomerId" />
+        <item itemvalue="JUnit.OrderRepositoryTests.addAnOrder" />
+        <item itemvalue="JUnit.CustomerRepositoryTests.testUpdateAuthenticationType" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-f644763e9732-24fca987" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="377d3ae7-3cd0-42a8-acb0-7e40f972d135" name="Changes" comment="" />
+      <created>1694844597191</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1694844597191</updated>
+      <workItem from="1694844598716" duration="1989000" />
+      <workItem from="1694918540790" duration="5955000" />
+      <workItem from="1694929602663" duration="33659000" />
+      <workItem from="1694971313730" duration="3852000" />
+      <workItem from="1695025184571" duration="5105000" />
+      <workItem from="1695031677076" duration="16717000" />
+      <workItem from="1695054693161" duration="1346000" />
+      <workItem from="1695089689109" duration="7431000" />
+      <workItem from="1695122509340" duration="15090000" />
+      <workItem from="1695176853651" duration="6099000" />
+      <workItem from="1695186408418" duration="3411000" />
+      <workItem from="1695202188786" duration="752000" />
+      <workItem from="1695204723028" duration="21749000" />
+      <workItem from="1695301715848" duration="10551000" />
+      <workItem from="1695564860556" duration="2134000" />
+      <workItem from="1695641009550" duration="12150000" />
+      <workItem from="1695724727080" duration="14888000" />
+      <workItem from="1695807802414" duration="18161000" />
+      <workItem from="1695832557919" duration="48000" />
+      <workItem from="1695871498107" duration="3011000" />
+      <workItem from="1695874881878" duration="16300000" />
+      <workItem from="1695902413752" duration="14123000" />
+      <workItem from="1695960498711" duration="9873000" />
+      <workItem from="1695994449749" duration="4550000" />
+      <workItem from="1696048368607" duration="29261000" />
+      <workItem from="1696136703465" duration="10310000" />
+      <workItem from="1696253415608" duration="6672000" />
+      <workItem from="1696305116817" duration="1598000" />
+      <workItem from="1696338338097" duration="4000" />
+      <workItem from="1696338445603" duration="7828000" />
+      <workItem from="1696389897234" duration="6191000" />
+      <workItem from="1696423730176" duration="10548000" />
+      <workItem from="1696506495726" duration="6607000" />
+      <workItem from="1696607694536" duration="1874000" />
+      <workItem from="1696609619688" duration="6328000" />
+      <workItem from="1696784082624" duration="2438000" />
+      <workItem from="1696787476523" duration="2357000" />
+      <workItem from="1696855286795" duration="11053000" />
+      <workItem from="1696905280725" duration="11616000" />
+      <workItem from="1696948753989" duration="9516000" />
+      <workItem from="1697008858345" duration="1870000" />
+      <workItem from="1697016841899" duration="1371000" />
+      <workItem from="1697192253672" duration="2971000" />
+      <workItem from="1697200073191" duration="59000" />
+      <workItem from="1697200164393" duration="11723000" />
+      <workItem from="1697278933047" duration="1644000" />
+      <workItem from="1708144198324" duration="15672000" />
+      <workItem from="1708218785524" duration="8587000" />
+      <workItem from="1697386517547" duration="595000" />
+      <workItem from="1697546319053" duration="868000" />
+      <workItem from="1697549467387" duration="624000" />
+      <workItem from="1697554367605" duration="557000" />
+      <workItem from="1708247647611" duration="4502000" />
+      <workItem from="1708287400276" duration="8031000" />
+      <workItem from="1708322611439" duration="213000" />
+      <workItem from="1708436665422" duration="12873000" />
+      <workItem from="1708486622988" duration="8038000" />
+      <workItem from="1708512076981" duration="594000" />
+      <workItem from="1708583508862" duration="14089000" />
+      <workItem from="1708668124938" duration="345000" />
+      <workItem from="1708682293025" duration="4102000" />
+      <workItem from="1708692197215" duration="2804000" />
+      <workItem from="1708702978570" duration="8447000" />
+      <workItem from="1708768762294" duration="2628000" />
+      <workItem from="1708837303086" duration="640000" />
+      <workItem from="1708841976165" duration="335000" />
+      <workItem from="1708871254663" duration="711000" />
+    </task>
+    <task id="LOCAL-00001" summary="push first">
+      <created>1695215767212</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1695215767212</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Fix the view cart item of logged in user.">
+      <option name="closed" value="true" />
+      <created>1708233541864</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1708233541865</updated>
+    </task>
+    <task id="LOCAL-00003" summary="add address checkout and order">
+      <option name="closed" value="true" />
+      <created>1708668364140</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1708668364140</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add amazon upload image, migrate db to Amazon RDS">
+      <option name="closed" value="true" />
+      <created>1708704206463</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1708704206463</updated>
+    </task>
+    <task id="LOCAL-00005" summary="prepare for deploy">
+      <option name="closed" value="true" />
+      <created>1708841925136</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1708841925136</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add Dockerfile">
+      <option name="closed" value="true" />
+      <created>1708842175692</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1708842175692</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
+    <option featureType="dependencySupport" implementationName="java:software.amazon.awssdk:s3" />
+    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
+    <option featureType="dependencySupport" implementationName="java:software.amazon.awssdk:sdk-core" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
+    <option featureType="dependencySupport" implementationName="java:org.thymeleaf:thymeleaf" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
+    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="SHOW_ROOT_NAMES" value="true" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+    <ignored-roots>
+      <path value="$PROJECT_DIR$/MyShopCommon" />
+      <path value="$PROJECT_DIR$/MyShopWebParent" />
+      <path value="$PROJECT_DIR$/MyShopWebParent/MyShopBackend" />
+      <path value="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend" />
+    </ignored-roots>
+    <MESSAGE value="push first" />
+    <MESSAGE value="Fix the view cart item of logged in user." />
+    <MESSAGE value="add address checkout and order" />
+    <MESSAGE value="add amazon upload image, migrate db to Amazon RDS" />
+    <MESSAGE value="prepare for deploy" />
+    <MESSAGE value="add Dockerfile" />
+    <option name="LAST_COMMIT_MESSAGE" value="add Dockerfile" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopBackend/src/main/java/com/myshop/admin/product/ProductController.java</url>
+          <line>122</line>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopBackend/src/main/java/com/myshop/admin/product/ProductService.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopBackend/src/main/java/com/myshop/admin/customer/CustomerController.java</url>
+          <line>69</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/shoppingcart/ShoppingCartService.java</url>
+          <line>25</line>
+          <option name="timeStamp" value="29" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/shoppingcart/ShoppingCartService.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/customer/ForgotPasswordController.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopBackend/src/main/java/com/myshop/admin/product/ProductController.java</url>
+          <line>239</line>
+          <option name="timeStamp" value="34" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/customer/CustomerController.java</url>
+          <line>106</line>
+          <option name="timeStamp" value="35" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/customer/CustomerService.java</url>
+          <line>86</line>
+          <option name="timeStamp" value="36" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+    <pin-to-top-manager>
+      <pinned-members>
+        <PinnedItemInfo parentTag="org.springframework.web.servlet.resource.ResourceUrlEncodingFilter$ResourceUrlEncodingRequestWrapper" memberName="prefixLookupPath" />
+      </pinned-members>
+    </pin-to-top-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

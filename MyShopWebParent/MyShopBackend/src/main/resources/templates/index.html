@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments :: head('Admin home','none')"></head>
+<body>
+<div th:replace="navigation :: content('none',false)"></div>
+
+<div  class="image-container">
+    <img th:src="@{/images/welcome_to.gif}" style="object-fit: contain;width: 100%;height: 954px">
+</div>
+
+<footer th:replace="fragments::footer"></footer>
+</body>
+</html>

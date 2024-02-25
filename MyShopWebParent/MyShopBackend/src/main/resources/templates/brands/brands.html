@@ -1,0 +1,99 @@
+ <!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments:: head('Category management','none')">
+</head>
+<body >
+
+<div th:replace="navigation :: content('/brands',true)"></div>
+
+
+<div class="container-fluid mt-5">
+
+    <div class="actions">
+        <a th:href="@{/brands/create_new}" title="Create new brand"><i class="fa-solid fa-circle-plus"></i></a> &nbsp; &nbsp;
+        <a th:href="@{/brands/export_excel}" title="Export to EXCEL"><i class="fa-solid fa-file-excel"></i></a> &nbsp;
+    </div>
+    <div>
+        <div th:if="${message_success}" class="alert alert-success text-center" role="alert">
+            [[${message_success}]]
+        </div>
+        <div th:if="${message_error}" class="alert alert-danger text-center" role="alert">
+            [[${message_error}]]
+        </div>
+    </div>
+
+    <div>
+        <h2 class="mt-3 mb-3 text-heading-lg">Brands listing page</h2>
+
+       <table class="table hidden-table ">
+           <thead>
+           <tr  class="table-primary">
+               <th th:replace="fragments :: column_link('/brands','id','Brand ID','none')"></th>
+               <th >Logo</th>
+               <th th:replace="fragments :: column_link('/brands','name','Brand name','none')"></th>
+               <th style="width: 50%" class="text-center">Categories</th>
+               <th >Actions</th>
+           </tr>
+           </thead>
+           <tbody>
+           <tr th:each="brand : ${list}">
+               <th class="hidden-col" scope="row">[[${brand.id}]]</th>
+               <td>
+                       <img th:src="@{${brand.imagePath}}" class="img-thumb" style="object-fit: contain">
+               </td>
+               <td>[[${brand.name}]]</td>
+               <td style="width: 50%;">
+                   <th:block th:each="category: ${brand.categories}">
+                       <span class="badge text-bg-secondary">[[${category.name}]]</span>
+                   </th:block>
+               </td>
+               <td>
+                   <a th:href="@{'/brands/edit/' + ${brand.id}}" title="edit this brand"><i class="fa-solid fa-file-pen action-edit"></i></a> &nbsp;&nbsp;
+                   <a th:href="@{'/brands/delete/' + ${brand.id}}"  title="delete this brand" th:brandId="${brand.id}" class="btn-delete"><i class="fa-regular fa-trash-can action-delete" ></i></a>
+               </td>
+           </tr>
+
+           </tbody>
+       </table>
+
+        <div class="show-info-sm">
+            <div th:each="brand : ${list}">
+              <div style="display: flex;border-bottom: 1px solid #b4a3a3;padding:10px 0">
+                  <img th:src="@{${brand.imagePath}}" class="img-thumb">
+                 <div style="margin-left: 20px;">
+                     <h4>[[${brand.name}]]</h4>
+                     <p>  <a th:href="@{'/brands/edit/' + ${brand.id}}" title="edit this brand"><i class="fa-solid fa-file-pen action-edit"></i></a> &nbsp;&nbsp;
+                         <a th:href="@{'/brands/delete/' + ${brand.id}}"  title="delete this brand" th:brandId="${brand.id}" class="btn-delete"><i class="fa-regular fa-trash-can action-delete" ></i></a></p>
+                 </div>
+              </div>
+            </div>
+
+        </div>
+
+
+
+
+        <div th:replace="fragments::pagination('/brands','brands')"></div>
+    </div>
+
+
+</div>
+
+
+
+<div th:replace="fragments :: modal_option"></div>
+
+<footer th:replace="fragments::footer"></footer>
+
+
+<script th:src="@{/js/common_form.js}"></script>
+
+<script>
+var entityName = "brand";
+var entityNameID = "brandId";
+
+
+</script>
+
+</body>
+</html>

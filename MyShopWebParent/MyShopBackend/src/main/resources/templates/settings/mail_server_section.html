@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head></head>
+<body>
+
+<div th:fragment="content" >
+
+    <form th:action="@{/settings/save_mail_server}" method="post" class="form  form--xxl "
+          enctype="multipart/form-data">
+        <div>
+            <div th:if="${message_success!=null}" class="alert alert-success text-center" role="alert">
+                [[${message_success}]]
+            </div>
+            <div th:if="${message_error !=null}" class="alert alert-danger text-center" role="alert">
+                [[${message_error}]]
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Mail host: </label>
+            <input type="text" class="form-control" required name="MAIL_HOST" th:value="${MAIL_HOST}">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Mail port: </label>
+            <input type="text" class="form-control" required name="MAIL_PORT" th:value="${MAIL_PORT}">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">User name: </label>
+            <input type="text" class="form-control" required name="MAIL_USERNAME" th:value="${MAIL_USERNAME}">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Password: </label>
+            <input type="text" class="form-control" required name="MAIL_PASSWORD" th:value="${MAIL_PASSWORD}">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Sender name: </label>
+            <input type="text" class="form-control" required name="MAIL_SENDER_NAME" th:value="${MAIL_SENDER_NAME}">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Mail from: </label>
+            <input type="text" class="form-control" required name="MAIL_FROM" th:value="${MAIL_FROM}">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Mail AUTH: </label>
+           <select class="form-control" name="MAIL_AUTH">
+               <option th:selected="${MAIL_AUTH == 'false'}" value="false">False</option>
+               <option th:selected="${MAIL_AUTH == 'true'}" value="true">True</option>
+           </select>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Mail SECURED: </label>
+            <select class="form-control" name="MAIL_SECURED">
+                <option th:selected="${MAIL_SECURED == 'true'}" value="true">True</option>
+                <option th:selected="${MAIL_SECURED == 'false'}" value="false">False</option>
+            </select>
+        </div>
+
+
+
+
+        <div class="divider-btn">
+            <button type="submit" class="form-btn form-btn--sm">Submit</button>
+
+        </div>
+    </form>
+
+
+</div>
+
+
+
+
+
+</body>
+</html>

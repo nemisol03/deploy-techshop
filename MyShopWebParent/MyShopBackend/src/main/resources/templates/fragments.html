@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:fragment="head(pageTitle,remove)" th:remove="${remove}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[[${pageTitle}]] - [[${SITE_NAME}]]</title>
+    <link rel="icon" th:href="@{/images/favicon.png}" type="image/png">
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/fontawesome/css/all.css}">
+    <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/main.css }">
+    <script th:src="@{/js/common.js}"></script>
+
+</head>
+<body>
+
+<!--column link-->
+<th th:fragment="column_link(link,fieldName,labelName,hiddenCol)" th:classappend="${hiddenCol}" >
+    <a th:href="@{${link}+'/page/'+${currentPage}+'?sortField='+${fieldName}+'&sortDir='+${reverseSortDir}+${keyword!=null? '&keyword='+ keyword : ''}}"
+       th:title="'click to sort ' + ${labelName} + ' order by '+  ${sortDir=='asc'? 'descending':'ascending'} ">
+        [[${labelName}]]
+        <i th:if="${sortField == fieldName}"
+           th:class="${sortDir=='asc' ?'fa-solid fa-caret-up': 'fa-solid fa-caret-down'}"></i>
+    </a>
+</th>
+
+
+<!--page link-->
+<a th:fragment="page_link(link,labelName,pageNum)" class="page-link" th:href="@{${link}+'/page/'+${pageNum}+'?sortField='+${sortField}+'&sortDir='+${sortDir}+${keyword!=null? '&keyword='+ keyword : ''}}">[[${labelName}]]</a>
+
+<!--pagination-->
+
+<div th:fragment="pagination(link,entityName)" class="pagination-section">
+    <div>
+        <p th:if="${currentPage >0 && currentPage <= totalPages}">Showing #[[${startCount}]] [[${entityName}]] to #[[${endCount}]]
+            in #[[${totalItems}]]</p>
+        <p th:if="${totalItems==0}">No [[${entityName}]] not found</p>
+    </div>
+    <nav th:if="${totalPages>1}" aria-label="Page navigation example"
+         style="display: flex;justify-content: center;align-items: center">
+        <ul class="pagination">
+            <li th:class="${currentPage==1?'page-item disabled':'page-item'}">
+                <a th:replace="fragments :: page_link(${link},'First',1)" ></a>
+            </li>
+            <li th:class="${currentPage==1?'page-item disabled':'page-item'}">
+                <a th:replace="fragments :: page_link(${link},'Previous',${currentPage - 1})" ></a>
+
+            </li>
+            <th:block th:each="i :${#numbers.sequence(1,totalPages)}">
+                <li th:class="${currentPage==i?'page-item active':'page-item'}">
+                    <a th:replace="fragments :: page_link(${link},${i},${i})" ></a>
+
+                </li>
+            </th:block>
+            <li th:class="${currentPage==totalPages?'page-item disabled':'page-item'}">
+                <a th:replace="fragments :: page_link(${link},'Next',${currentPage + 1})" ></a>
+
+            </li>
+            <li th:class="${currentPage==totalPages?'page-item disabled':'page-item'}">
+                <a th:replace="fragments :: page_link(${link},'Last',${totalPages})" ></a>
+
+            </li>
+        </ul>
+    </nav>
+</div>
+
+
+<footer th:fragment="footer" class="footer">
+    <p class="text-center" th:utext="${COPYRIGHT}"> </p>
+</footer>
+
+<!-- Modal -->
+
+
+
+<div th:fragment="modal_option" class="modal fade" id="modal_yes_no" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                <a  href="" id="btn-confirm"  class="btn btn-primary">OK</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:fragment="modal_notify" class="modal fade" id="modal_notify" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5 text-danger" ></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-black">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+</html>

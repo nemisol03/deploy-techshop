@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <head th:replace="fragments:: head('Address book','tag')"></head>
+    <script th:src="@{/js/number_format.min.js}"></script>
+</head>
+<body class="bg-main">
+<div th:replace="navigation ::content('none',false)"></div>
+
+
+<!-- address book -->
+
+<div class="container my-10">
+    <h1 class="text-center">Your address book</h1>
+    <div class="actions mb-6">
+        <a th:href="@{/address_book/create_new}" ><i class="fa-solid fa-circle-plus"></i> Create new address book</a> &nbsp; &nbsp;
+    </div>
+    <div>
+        <div th:if="${message_success}" class="alert alert-success text-center" role="alert">
+            [[${message_success}]]
+        </div>
+        <div th:if="${message_error}" class="alert alert-danger text-center" role="alert">
+            [[${message_error}]]
+        </div>
+    </div>
+
+    <div class="row mt-2 mb-4">
+        <div class="col-sm-6 mt-4">
+            <div class="card" th:classappend="${usePrimaryAddressAsDefault ? 'bg-warning': ''}">
+                <div class="card-header fw-bold  ">
+                    Your primary address
+                    <th:block>
+                        <a th:href="@{'/address_book/default/0'}" th:unless="${usePrimaryAddressAsDefault}" class="text-primary">[Set as default]</a>
+                        <span class="text-danger" th:if="${usePrimaryAddressAsDefault}">[ Default ]</span>
+                    </th:block>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">[[${customer.fullAddress}]]</p>
+                </div>
+            </div>
+
+        </div>
+
+        <th:block th:each="address,status : ${addressList}">
+            <div class="col-sm-6 mt-4">
+                <div class="card" th:classappend="${address.defaultForShipping ? 'bg-warning': ''}">
+                    <div class="card-header fw-bold row">
+
+                        <span class="col-10">Address # [[${status.count + 1}]]
+
+                        <th:block>
+                            <a th:href="@{'/address_book/default/'+ ${address.id}}" th:unless="${address.defaultForShipping}" class="text-primary">[Set as default]</a>
+                            <span class="text-danger" th:if="${address.defaultForShipping}">[ Default ]</span>
+                        </th:block>
+
+
+                        </span>
+                        <span class="col-2">
+                        <a th:href="@{'/address_book/edit/' + ${address.id}}" title="edit this address"><i
+                                class="fa-solid fa-file-pen action-edit"></i></a> &nbsp;&nbsp;
+                         <a th:href="@{'/address_book/delete/' + ${address.id}}" title="delete this address"
+                            th:addressId="${address.id}" class="btn-delete"><i
+                                 class="fa-regular fa-trash-can action-delete"></i></a>
+                    </span>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">[[${address}]]</p>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </th:block>
+
+
+    </div>
+
+
+</div>
+<div th:replace="fragments :: modal_option"></div>
+<footer th:replace="fragments:: footer"></footer>
+<script th:src="@{/js/common_form.js}"></script>
+<script>
+    var entityName = "address";
+    var entityNameID = "addressId";
+
+
+</script>
+
+
+</body>
+</html>

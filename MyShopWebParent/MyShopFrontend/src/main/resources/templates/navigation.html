@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org"  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+<div th:fragment="content(link,showSearchBar)"  class="container-fluid" style="background-color: #4D2DB7">
+  <form th:action="@{/logout}" method="post" hidden="hidden" id="form-logout"></form>
+  <div class="container-fluid" >
+    <nav class="navbar navbar-expand-lg "  >
+      <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/}">
+          <img th:src="@{${AWS_BASE_URI + SITE_LOGO}}" alt="logo" style="width: 100%;height: 70px">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 19px;" >
+
+            <li class="nav-item" >
+              <a class="nav-link text-white" th:href="@{/}">Notify&nbsp; </a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link text-white" th:href="@{/carts}"><i class="fa-solid fa-cart-shopping"></i> &nbsp;Cart&nbsp; </a>
+            </li>
+
+            <li class="nav-item" >
+              <a class="nav-link text-white" th:href="@{/address_book}"><i class="fa-solid fa-map-location-dot"></i> &nbsp;Your address book&nbsp; </a>
+            </li>
+
+            <li class="nav-item" >
+              <a class="nav-link text-white" th:href="@{/orders}"><i class="fa-solid fa-suitcase"></i> &nbsp;Orders&nbsp; </a>
+            </li>
+
+
+
+          </ul>
+
+          <form th:if="${showSearchBar==true}" th:action="@{${link}+ '/page/1'}" class="d-flex" role="search">
+            <input type="hidden" name="sortField" th:value="${sortField}">
+            <input type="hidden" name="sortDir" th:vallue="${sortDir}">
+            <input  class="form-control me-2" th:value="${keyword}" name="keyword" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+          </form>
+          <ul sec:authorize="isAnonymous()" class="d-flex navbar-nav  mb-2 mb-lg-0" style="font-size: 19px;">
+            <li class="nav-item" >
+              <a class="nav-link text-white" th:href="@{/register}"> Sign up </a>
+            </li>
+            <li class="nav-item" >
+              <a class="nav-link text-white" th:href="@{/login}"> Sign in  </a>
+            </li>
+          </ul>
+
+          <div sec:authorize="isAuthenticated()" class="dropdown" id="dropdown-profile" style="color: #fff">
+
+              <div style="display: flex;align-items: center"   class="dropdown-toggle" id="dropdownMenuButton" data-mdb-toggle="dropdown"  aria-expanded="false">
+                <img  th:src="@{${#authentication.principal.avatar}}" class="thumb-user">
+                <span sec:authentication="principal.fullName" class="name-user"></span>
+              </div>
+
+
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li th:if="${!isOAuth2}">
+                <a class="dropdown-item" th:href="@{/customers/info}">Rectify your profile</a>
+              </li>
+              <li><a class="dropdown-item" id="btn-logout" href="">Logout</a></li>
+            </ul>
+
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+  <div class="modal fade" id="modal_logout" tabindex="-1" aria-labelledby="exampleModalLabel"
+       aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title text-danger fs-5" id="exampleModalLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body text-body-emphasis">
+        </div>
+        <div class="modal-footer">
+          <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+          <button onclick="document.getElementById('form-logout').submit()" id="btn-confirm-logout" type="button" class="btn btn-primary">Logout now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: head(${pageTitle},'none')"></head>
+<body>
+<div th:replace="navigation :: content('/products',true)"></div>
+
+<div th:fragment="content" class="container mt-3">
+
+
+        <div class="mb-3">
+            <label for="" class="form-label">Product name</label>
+            <input type="text" class="form-control"  placeholder="Eg: Dell precision 7510" th:field="*{name}" required th:disabled="${#authorization.expression('hasAuthority(''Salesperson'')')}">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Alias</label>
+            <input type="text" class="form-control"  placeholder=" Note that: if you leave it blank, the alias will be set by the product's name and replace space with two dashes"
+                   th:field="*{alias}" th:disabled="${#authorization.expression('hasAuthority(''Salesperson'')')}">
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Brand:</label>
+            <select sec:authorize="hasAnyAuthority('Admin','Editor')" class="form-select" id="brands-dropdown" th:field="*{brand}"  >
+
+                <th:block th:each="brand: ${brands}">
+                    <option th:value="${brand.id}">[[${brand.name}]]</option>
+                </th:block>
+            </select>
+
+            <label sec:authorize="hasAuthority('Salesperson')"  class="form-label" style="font-weight: 500"><i>[[${product.brand.name}]]</i> </label>
+
+
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Category:</label>
+            <select  sec:authorize="hasAnyAuthority('Admin','Editor')" class="form-select" id="categories-dropdown" th:field="*{category}"  th:categoryIdEditMode="${product.category == null ? null : product.category.id}"  > </select>
+            <label sec:authorize="hasAuthority('Salesperson')"  class="form-label" style="font-weight: 500"><i>[[${product.category.name}]]</i></label>
+
+        </div>
+
+            <div class="mb-3 form-check ml-3">
+                <input type="checkbox" class="form-check-input" th:field="*{enabled}" th:disabled="${#authorization.expression('hasAuthority(''Salesperson'')')}"  >
+                <label class="form-check-label" for="enabled">Enabled</label>
+            </div>
+
+            <div class="mb-3 form-check ml-3">
+                <input type="checkbox" class="form-check-input" th:field="*{inStock}" th:disabled="${#authorization.expression('hasAuthority(''Salesperson'')')}" >
+                <label class="form-check-label" for="enabled">In stock</label>
+            </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Price:</label>
+            <input type="text" class="form-control"  placeholder="Eg: 300$" th:field="*{price}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">List price - MSRP:</label>
+            <input type="text" class="form-control"  placeholder="Eg: 301$" th:field="*{listPrice}" required>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">Discount percent:</label>
+            <input type="text" class="form-control"  placeholder="Eg: 10(%)-just type number" th:field="*{discountPercent}" required>
+        </div>
+
+
+
+        <div class="divider-btn">
+            <button type="submit" class="form-btn form-btn--sm">Submit</button>
+            <button type="button" class="btn btn-secondary" style="padding: 10px 16px;margin-left: 20px;" id="btn-cancel" name="btn-cancel-form">Cancel</button>
+        </div>
+
+
+</div>
+
+
+<div th:replace="fragments :: modal_notify"></div>
+
+<footer th:replace="fragments::footer"></footer>
+<script th:src="@{/js/common_form.js}"></script>
+<script>
+    var contextPath = "[[@{/}]]";
+    var currentLocation = "[[@{/products}]]";
+    var csrfValue = "[[${_csrf.token}]]"
+
+
+
+</script>
+</body>
+</html>

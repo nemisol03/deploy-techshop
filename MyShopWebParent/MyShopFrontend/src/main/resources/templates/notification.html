@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragments :: head(${pageTitle},'none')"></head>
+<body class="bg-main">
+<div style="display: flex;align-items: center;justify-content: center;flex-direction: column;min-height: 100vh">
+  <p style="padding:10px 30px;color: #fff;font-size: 24px;font-weight: 500" > [[${message}]]</p>
+<!--  <span style="text-align: center">The request you made is invalid.<br>You may have provided incorrect data or the request format is not supported.</span>-->
+  <a th:href="@{/}" class=" form-btn form-btn--md text-center mt-3" style="text-decoration: none" >Back to website</a>
+</div>
+</body>
+</html>

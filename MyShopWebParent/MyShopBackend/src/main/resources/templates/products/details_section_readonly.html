@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head ></head>
+<body>
+<div th:fragment="content" class="container mt-3">
+
+    <div id="divAllDetails">
+        <th:block th:if="${product.details.size==0}">
+            <h2 class="text-center text-info">No details to show</h2>
+        </th:block>
+
+            <table th:if="${product.details.size >0}" class="table table-bordered border-primary" >
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Value</th>
+
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                <tr th:if="${product.id != null}" th:each="detail,count : ${product.details}">
+                    <th scope="row">[[${count.count}]]</th>
+                    <td>[[${detail.name}]]</td>
+                    <td>[[${detail.value}]]</td>
+
+                </tr>
+
+                </tbody>
+            </table>
+
+
+
+
+
+
+    </div>
+
+
+</div>
+
+
+
+</body>
+</html>

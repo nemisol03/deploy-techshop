@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oops! 400 - Bad Request</title>
+  <link rel="stylesheet" th:href="@{/css/main.css}">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body class="bg-main">
+<div style="display: flex;align-items: center;justify-content: center;flex-direction: column;min-height: 100vh">
+  <h1 style="font-size: 120px">400</h1>
+  <p style="background-color: #fff;padding:10px 30px;color: #000"> Opps! Bad Request</p>
+  <span style="text-align: center">The request you made is invalid.<br>You may have provided incorrect data or the request format is not supported.</span>
+  <a th:href="@{/}" class=" form-btn form-btn--md text-center mt-3" style="text-decoration: none" >Back to website</a>
+</div>
+</body>
+</html>

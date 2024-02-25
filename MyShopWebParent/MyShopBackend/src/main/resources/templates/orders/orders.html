@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments:: head('Order management','none')">
+</head>
+<body>
+
+<div th:replace="navigation :: content('/orders',true)"></div>
+
+
+<div class="container-fluid mt-5">
+
+    <div class="actions">
+        &nbsp;
+        <a th:href="@{/orders/export_csv}" title="Export to CSV"><i class="fa-solid fa-file-csv"></i></a> &nbsp;&nbsp;
+        <a th:href="@{/orders/export_excel}" title="Export to EXCEL"><i class="fa-solid fa-file-excel"></i></a> &nbsp;
+    </div>
+    <div>
+        <div th:if="${message_success}" class="alert alert-success text-center" role="alert">
+            [[${message_success}]]
+        </div>
+        <div th:if="${message_error}" class="alert alert-danger text-center" role="alert">
+            [[${message_error}]]
+        </div>
+    </div>
+
+    <div>
+        <h2 class="mt-3 mb-3 text-heading-lg">Order listing page</h2>
+
+        <table class="table hidden-table ">
+            <thead>
+            <tr class="table-primary">
+                <th th:replace="fragments :: column_link('/orders','id','Order ID','hidden-col')"></th>
+                <th th:replace="fragments :: column_link('/orders','firstName','First name','hidden-col')"></th>
+
+                <th th:replace="fragments :: column_link('/orders','lastName','Last name','none')"></th>
+                <th th:replace="fragments :: column_link('/orders','address','Address','none')"></th>
+                <th th:replace="fragments :: column_link('/orders','status','Status','none')"></th>
+                <th th:replace="fragments :: column_link('/orders','orderTime','Order time','none')"></th>
+                <th>Payment method</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="item : ${list}">
+                <th class="hidden-col" scope="row">[[${item.id}]]</th>
+                <td class="hidden-col">[[${item.firstName}]]</td>
+                <td class="hidden-col">[[${item.lastName}]]</td>
+                <td class="hidden-col">[[${item.address}]]</td>
+                <td class="hidden-col" th:text="${item.status}"></td>
+                <td class="hidden-col" th:text="${#temporals.format(item.orderTime, 'dd-MM-yyyy HH:mm')}"></td>
+                <td class="hidden-col" th:text="${item.paymentMethod}"></td>
+                <td>
+                    <a class="btn-view-detail text-decoration-none" th:href="@{'/orders/' + ${item.id}+'/view_detail'}"
+                       title="click to view detail the order">
+                        <i class="fa-solid fa-circle-info action-view-detail"></i>
+                    </a> &nbsp;
+
+                    <a th:href="@{'/orders/delete/' + ${item.id}}" title="delete this order" th:orderId="${item.id}"
+                       class="btn-delete"><i class="fa-regular fa-trash-can action-delete"></i></a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <div class="show-info-sm">
+            <div th:each="item : ${list}">
+                <div style="display: flex;border-bottom: 1px solid #b4a3a3;padding:10px 0">
+                    <div style="margin-left: 20px;">
+                        <h4>[[${item.firstName}]]</h4>
+                        <p>
+                            <a class="btn-view-detail" th:href="@{'/orders/' + ${item.id}+'/view_detail'}"
+                               title="click to view detail the order">
+                                <i class="fa-solid fa-circle-info action-view-detail"></i>
+                            </a> &nbsp;
+
+                            <a th:href="@{'/orders/edit/' + ${item.id}}" title="edit this order"><i
+                                class="fa-solid fa-file-pen action-edit"></i></a> &nbsp;&nbsp;
+                            <a th:href="@{'/orders/delete/' + ${item.id}}" title="delete this order"
+                               th:orderId="${item.id}" class="btn-delete"><i
+                                    class="fa-regular fa-trash-can action-delete"></i></a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div th:replace="fragments::pagination('/orders','Orders')"></div>
+    </div>
+
+
+</div>
+
+
+<div th:replace="fragments :: modal_option"></div>
+<div  class="modal fade" id="modal-view-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<footer th:replace="fragments::footer"></footer>
+
+<script th:src="@{/js/common_form.js}"></script>
+<script>
+    var entityName = "order";
+    var entityNameID = "orderId";
+
+    $(document).ready(function () {
+        $('.btn-view-detail').on('click',function (e) {
+            e.preventDefault();
+            linkDetail = $(this).attr('href');
+            $('#modal-view-details').modal('show').find('.modal-content').load(linkDetail);
+
+        })
+    })
+
+
+</script>
+
+</body>
+</html>

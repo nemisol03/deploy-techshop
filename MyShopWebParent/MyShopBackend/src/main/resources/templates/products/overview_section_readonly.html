@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head></head>
+<body>
+
+<div th:fragment="content" class="container mt-3">
+
+
+        <div class="mb-3">
+            <label for="" class="form-label">Product name</label>
+            <input type="text" class="form-control"  th:value="${product.name}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Alias</label>
+            <input type="text" class="form-control" th:value="${product.alias}" readonly >
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Brand: </label> <span>[[${product.brand.name}]]</span>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Category: </label><span>[[${product.category.name}]]</span>
+        </div>
+
+            <div class="mb-3 form-check ml-3">
+                <input type="checkbox" class="form-check-input" th:checked="${product.enabled}"  onclick="return false;">
+                <label class="form-check-label" for="enabled">Enabled</label>
+            </div>
+
+            <div class="mb-3 form-check ml-3">
+                <input type="checkbox" class="form-check-input" th:checked="${product.inStock}" onclick="return false;" >
+                <label class="form-check-label" for="">In stock</label>
+            </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Price:</label>
+            <input type="text" class="form-control"   th:value="${product.price}"  readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">List price - MSRP:</label>
+            <input type="text" class="form-control"   th:value="${product.listPrice}"  readonly>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">Discount percent:</label>
+            <input type="text" class="form-control"  th:value="${product.discountPercent}" readonly >
+        </div>
+    <div class="mb-3">
+        <label for="" class="form-label">Updated at:</label>
+        <span th:text="${product.updatedAt}" readonly >
+    </div>
+
+
+
+
+
+
+</div>
+
+
+</body>
+</html>

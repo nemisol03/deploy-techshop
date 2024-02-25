@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments:: head('Home','none')">
+<body class="bg-main">
+<div th:replace="navigation ::content('/products/search',true)"></div>
+
+    <div class="container">
+
+        <div th:if="${searchResult.isEmpty()}">
+            <h4 class="heading-topic text-center">Can't not find any product ' [[${keyword}]] '</h4>
+        </div>
+
+
+
+
+    <div th:if="${!searchResult.isEmpty()}">
+        <h4 class="heading-topic heading-topic-sm">Result search for ' [[${keyword}]] '</h4>
+        <ul class="row product-list" style="list-style: none;">
+            <th:block th:each="product : ${searchResult}">
+                <li th:replace="fragments :: productItem(${product})"></li>
+            </th:block>
+
+
+        </ul>
+    </div>
+        <div th:replace="fragments::pagination('/products/search','products')"></div>
+
+    </div>
+
+
+
+
+<footer th:replace="fragments:: footer"></footer>
+</body>
+</html>

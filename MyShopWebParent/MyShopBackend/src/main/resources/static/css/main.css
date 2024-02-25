@@ -1,0 +1,400 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+:root {
+    --myfavourite-color: rgb(202, 104, 120);
+}
+
+.text-white {
+    color: #fff !important;
+}
+
+.text-heading-lg {
+    font-size: 34px;
+    color: #573391;
+    font-style: italic;
+}
+
+body {
+    min-height: 100vh;
+}
+
+.bg-main {
+    background: linear-gradient(rgb(14, 17, 36), rgb(36, 26, 73));
+    color: #fff;
+}
+
+
+ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+.product-item {
+    background-color: rgb(19, 23, 42);
+    border: 1px solid rgb(35, 39, 61);
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.product-content {
+    margin-top: 14px;
+    color: #fff;
+    padding-left: 10px;
+}
+
+.product-link {
+    text-decoration: none;
+}
+
+.product-img {
+    width: 100%;
+    height: auto;
+}
+
+.product-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+#btn-add_to_cart {
+    margin-right: 20px;
+}
+
+.product-detail {
+    margin-bottom: 40px;
+}
+
+.thumbnail-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+}
+
+.thumbnail-product {
+    margin: 20px;
+    width: calc(25% - 20px);
+}
+
+.thumb-img {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.wrapper-border {
+    margin-top: 30px;
+    border: 1px solid #bbb4b4;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 10px;
+}
+
+
+.product-quantity button {
+    border: none;
+    background-color: transparent;
+    color: #fff;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.product-quantity input {
+    background-color: transparent;
+    border: none;
+    color: #fff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 22px;
+}
+
+
+/* product order  */
+.product-order-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 10px;
+}
+
+.table-order {
+    width: 100%;
+    background-color: transparent !important;
+    border: 1px solid #fff !important;
+    border-radius: 10px !important;
+
+}
+
+.table-order th,
+.table-order td {
+
+    color: #fff;
+    text-align: center;
+    vertical-align: middle;
+    background-color: transparent !important;
+
+}
+
+.table-order tr {
+    border-bottom: none;
+    font-weight: bolder;
+}
+
+.total-cost {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 26px;
+    font-weight: 600;
+}
+
+
+/* login section */
+.form {
+    width: 100%;
+    max-width: 500px;
+    margin: 10px auto;
+    border: 1px solid #999;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.form--lg {
+    max-width: 600px;
+
+}
+
+.form--xxl {
+    max-width: 930px;
+
+}
+
+.form--sm {
+    max-width: 400px;
+}
+.form-control::placeholder {
+    color: #c7bfbf;
+}
+
+.form-heading {
+    color: var(--myfavourite-color);
+    text-align: center;
+}
+
+.form-btn {
+    background: linear-gradient(to right, rgb(225, 64, 180), rgb(126, 43, 237));
+    border-radius: 8px;
+    width: 100%;
+    border: none;
+    padding: 10px 0;
+    opacity: 0.9;
+    color: #fff;
+    font-weight: 500;
+}
+
+.form-btn--sm {
+    width: 90px;
+}
+
+.form-btn--md{
+    width: 160px;
+}
+
+.divider-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.img_thumb-container {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+
+.img-thumb {
+    width: 140px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 14px;
+}
+
+.form-btn:hover {
+    opacity: 1;
+
+}
+
+.btn-switch {
+    font-weight: 700;
+}
+
+
+/*  admin*/
+/*bg admin index*/
+.image-container {
+    width: 100%;
+    height: 954px; /* Để duy trì tỷ lệ khung hình ban đầu */
+}
+
+.image-container img {
+    width: 100%;
+    height: auto; /* Giữ tỷ lệ khung hình ban đầu */
+}
+
+/*entity listing page*/
+.actions a {
+    color: var(--myfavourite-color);
+    font-size: 24px;
+}
+
+.action-edit {
+    color: #a49b9b;
+}
+.action-view-detail{
+    color: var(--myfavourite-color);
+}
+
+.btn-green {
+    color: #46ce20;
+}
+
+.btn-red, .action-delete {
+    color: #D80032;
+}
+
+.mb-3.form-check {
+    margin-left: 20px;
+}
+
+
+.pagination-section {
+    text-align: center;
+}
+
+.thumb-user {
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    border: 2px solid var(--myfavourite-color);
+    object-fit: cover;
+}
+
+.name-user {
+    margin-left: 10px;
+    color: var(--myfavourite-color);
+    font-size: 14px;
+}
+
+.image-wrapper {
+    border: 1px solid gray;
+    padding: 16px;
+    border-radius: 8px ;
+    width: 400px;
+    min-height: 400px;
+    text-align: center;
+    margin-right: 30px;
+}
+.img-thumb--xl {
+    width: 300px;
+    height: 300px;
+    object-fit: contain;
+    max-width: 100%;
+}
+
+
+/* footer section */
+.footer {
+    background-color: #757070;
+    color: #fff;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.footer p {
+    margin: 0;
+}
+
+
+/*dropdown*/
+.dropdown:hover > .dropdown-menu {
+    display: block;
+}
+
+.dropdown > .dropdown-toggle:active {
+    /*Without this, clicking will make it sticky*/
+    pointer-events: none;
+}
+
+
+/*responsive*/
+@media screen and (max-width: 768px) and (min-width: 336px) {
+    #dropdown-profile {
+        margin-left: 0px;
+        margin-top:10px;
+
+    }
+    .hidden-table {
+        display: none !important;
+    }
+    .pagination {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .pagination li {
+        margin-top: 10px;
+    }
+    .img-thumb {
+        object-fit: contain;
+    }
+    .image-wrapper {
+        margin-right:0px;
+        width: 330px;
+    }
+}
+
+
+@media screen and (max-width: 1024px) and (min-width: 768px) {
+    .hidden-col {
+        display: none !important;
+    }
+    #dropdown-profile {
+        margin-left: 0px;
+    }
+    .show-info-sm {
+        display: none;
+    }
+
+
+
+}
+
+
+@media screen and (min-width: 1024px) {
+    #dropdown-profile {
+        margin-left: 60px;
+    }
+
+    .show-info-sm {
+        display: none;
+    }
+
+}
+
+

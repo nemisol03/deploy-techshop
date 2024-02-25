@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head></head>
+<body>
+
+<div th:fragment="content" class="container mt-3">
+
+
+        <div class="mb-3">
+            <label for="" class="form-label">Order ID</label>
+            <input type="text" class="form-control"  th:value="${order.id}" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Purchaser name</label>
+            <input type="text" class="form-control" th:value="${order.firstName +' ' + order.lastName}" readonly >
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Phone number: </label> <span>[[${order.phoneNumber}]]</span>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Address: </label><span>[[${order.address}]]</span>
+        </div>
+        <div class="mb-3">
+            <label  class="form-label">Payment method: </label><span>[[${order.paymentMethod}]]</span>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Status: </label><span>[[${order.status}]]</span>
+        </div>
+
+        <div class="mb-3">
+            <label for="" class="form-label">Total:</label>
+            <input type="text" class="form-control"   th:value="${order.total}"  readonly>
+        </div>
+
+
+        <div class="mb-3">
+            <label for="" class="form-label">Order time:</label>
+            <span th:text="${order.orderTime}" readonly ></span>
+        </div>
+
+</div>
+</body>
+</html>

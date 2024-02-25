@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <head th:replace="fragments:: head('Shopping cart','tag')"> </head>
+    <script th:src="@{/js/number_format.min.js}"></script>
+</head>
+<body class="bg-main">
+<div th:replace="navigation ::content('none',false)"></div>
+
+
+<!-- product detail -->
+
+<div class="container product-detail">
+    <div class="row">
+
+        <div class="" >
+            <h2 class="order-header heading-topic heading-topic-sm" >Check out </h2>
+            <div><h3>Your address which you can be received your items</h3>
+            <p>[[${shippingAddress}]]</p>
+                <a th:href="@{/address_book}">Choose another address</a>
+            </div>
+
+            <div>
+                <h2>Payment method</h2>
+                <div><input type="radio" name="payment_method"> COD (Cash on delivery)</div>
+            </div>
+
+            <button class="btn btn-primary " style=" float: right;margin-top: 30px;"> Confirm buy</button>
+        </div>
+
+    </div>
+
+</div>
+<div th:replace="fragments:: modal_notify"></div>
+<footer th:replace="fragments:: footer"></footer>
+
+
+
+
+
+</body>
+</html>

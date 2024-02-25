@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <head th:replace="fragments:: head(${product.shortName},'tag')"> </head>
+    <script th:src="@{/js/number_format.min.js}"></script>
+</head>
+<body class="bg-main">
+<div th:replace="navigation ::content('none',false)"></div>
+
+<div class="container">
+
+    <nav th:replace="fragments:: breadcrumbProduct"></nav>
+
+
+    <!-- product detail -->
+    <div class="container product-detail">
+        <div class="row">
+            <div class=" col-md-6 col-sm-12">
+                <div class="imgs ">
+                    <img id="main-img" th:src="@{${product.mainImagePath}}" alt="">
+                    <div class="thumbnail-container ">
+                        <div th:each="extraImg : ${product.images}" class="thumbnail-product">
+                            <img th:src="@{${extraImg.extraImagePath}}" alt="" class="thumb-img product-thumb">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class=" col-md-6 col-sm-12 divider-vertical product-detail-section">
+                <div class="product-content">
+                    <h5 class="product-name">[[${product.name}]]<span th:if="${product.discountPercent > 0}"
+                                                                           class="sale-off"> -[[${product.discountPercent}]]% </span>
+                    </h5>
+                    <p class="product-desc" style="color: #b6adad;font-style: italic;"
+                       th:utext="${product.shortDescription}"></p>
+                    <p class="product-price" th:if="${product.discountPercent >0}">
+                        <del>$ [[${product.price}]]</del>
+                        $ [[${product.priceWithDiscountPercent}]]
+                    </p>
+                    <p class="product-price" th:if="${product.discountPercent ==0}"> $ [[${product.price}]]</p>
+
+                   <th:block th:if="${product.inStock}">
+                    <div th:replace="fragments :: quantityControl(1,${product.id})"></div>
+
+
+                       <div class="product-actions" style="position: relative">
+                           <a href="" class=" btn btn-primary btn-add_to_cart" th:pid="${product.id}" >Add to cart</a>
+
+                       </div>
+                   </th:block>
+                    <th:block th:unless="${product.inStock}">
+                            <h4 class="text-danger">Out of stock</h4>
+                    </th:block>
+
+                    <ul id="product-overview-feature">
+                        <li class="product-overview-item row" th:each="proFeature : ${product.details}">
+                            <p class="col-5 " style="font-weight: 500">[[${proFeature.name}]]</p>
+                            <p class="col-3">[[${proFeature.value}]]</p>
+                        </li>
+
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <h4 class="heading-topic heading-topic-sm">Product full description:</h4>
+        <p th:utext="${product.fullDescription}"></p>
+
+        <div id="related-products" th:if="${relatedProducts.size()>0}">
+            <h4 class="heading-topic heading-topic-sm mt-3">Other related products:</h4>
+            <ul class="row product-list" style="list-style: none;">
+                <th:block th:each="relatedProd : ${relatedProducts}">
+                    <li th:replace="fragments :: productItem(${relatedProd })"></li>
+                </th:block>
+
+
+            </ul>
+        </div>
+
+
+    </div>
+
+
+</div>
+
+<!--modal show images-->
+<div  class="modal fade" id="modal_show_imgs" tabindex="-1" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Showing product images</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="carouselExampleIndicators" class="carousel slide carousel-dark " data-bs-ride="carousel">
+
+                    <div class="carousel-inner imgs">
+                        <div class="carousel-item active">
+                           <img  th:src="@{${product.mainImagePath}}" alt="" class="img-fluid">
+                        </div>
+                        <div class="carousel-item" th:each="extraImg : ${product.images}">
+                            <img th:src="@{${extraImg.extraImagePath}}" alt="" class="img-fluid">
+                        </div>
+
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button  type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div th:replace="fragments:: modal_notify"></div>
+<footer th:replace="fragments:: footer"></footer>
+
+<script>
+    $(document).ready(function () {
+        contextPath = "[[@{/}]]";
+        csrfValue = "[[${_csrf.token}]]";
+        csrfHeader = "[[${_csrf.headerName}]]";
+        mainImg = $('#main-img');
+
+
+
+        originalMainImgSrc = mainImg.attr('src');
+        $('.product-thumb').mouseover(function () {
+            currentImgSrc = $(this).attr('src');
+            mainImg.attr('src', currentImgSrc)
+        })
+        $('.product-thumb').mouseout(function () {
+            mainImg.attr('src', originalMainImgSrc)
+        })
+        mainImg.on('click',function () {
+            $('#modal_show_imgs').modal('show');
+        })
+
+        $('.btn-plus-quantity').on('click', function () {
+            productId = $(this).attr("pid")
+            productQuantity = $('#product-quantity' + productId);
+            quantityInt = parseInt(productQuantity.val());
+
+            if(quantityInt >=10) {
+                showModalNotify('Error','The quantity of product must be less than or equal 10');
+            }else {
+
+                productQuantity.val(quantityInt + 1);
+            }
+
+        })
+        $('.btn-minus-quantity').on('click', function () {
+            productId = $(this).attr("pid")
+            productQuantity = $('#product-quantity' + productId);
+            quantityInt = parseInt(productQuantity.val());
+            if(quantityInt <=1) {
+                showModalNotify('Error','The quantity of product must be greater than or equal 1');
+
+            }else {
+                productQuantity.val(quantityInt - 1);
+
+            }
+        })
+
+    })
+</script>
+<script th:src="@{/js/add_to_cart.js}"></script>
+
+
+</body>
+</html>

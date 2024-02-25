@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: head(${pageTitle},'none')"></head>
+<body>
+<div th:replace="navigation :: content('/products',true)"></div>
+
+<div th:fragment="content" class="container mt-3">
+
+<th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
+        <div class="mb-3">
+            <label for="" class="form-label">Short description:</label>
+            <textarea class="form-control"  placeholder="......" th:field="*{shortDescription}" style="overflow: auto;" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Full description:</label>
+            <textarea class="form-control"  placeholder="..." th:field="*{fullDescription}" style="overflow: auto;" required></textarea>
+        </div>>
+</th:block>
+    <th:block sec:authorize="hasAuthority('Salesperson')">
+      <div th:replace="products/description_section_readonly::content"></div>
+    </th:block>
+
+
+
+
+        <div class="divider-btn">
+            <button type="submit" class="form-btn form-btn--sm">Submit</button>
+            <button type="button" class="btn btn-secondary" style="padding: 10px 16px;margin-left: 20px;" id="btn-cancel" name="btn-cancel-form">Cancel</button>
+        </div>
+
+
+</div>
+
+
+<div th:replace="fragments :: modal_notify"></div>
+
+<footer th:replace="fragments::footer"></footer>
+<script th:src="@{/js/common_form.js}"></script>
+<script>
+    var contextPath = "[[@{/}]]";
+    var currentLocation = "[[@{/products}]]";
+    var csrfValue = "[[${_csrf.token}]]"
+
+
+
+
+</script>
+</body>
+</html>

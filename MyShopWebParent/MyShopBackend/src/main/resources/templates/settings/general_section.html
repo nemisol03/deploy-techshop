@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head></head>
+<body>
+
+<div th:fragment="content" >
+
+    <form th:action="@{/settings/save_general}" method="post" class="form  form--xxl "
+          enctype="multipart/form-data">
+        <div>
+            <div th:if="${message_success!=null}" class="alert alert-success text-center" role="alert">
+                [[${message_success}]]
+            </div>
+            <div th:if="${message_error !=null}" class="alert alert-danger text-center" role="alert">
+                [[${message_error}]]
+            </div>
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Site name: </label>
+            <input type="text" class="form-control" required name="SITE_NAME" th:value="${SITE_NAME}">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Copyright:</label>
+            <input type="text" class="form-control" required name="COPYRIGHT" th:value="${COPYRIGHT}">
+        </div>
+        <div class="mb-3">
+            <label for="" class="form-label">Site logo:</label>
+            <img th:src="@{${AWS_BASE_URI + SITE_LOGO}}" class="img-thumb float-end" style="object-fit: contain" id="image-thumb">
+            <input type="file" class="form-control mt-2" id="thumb" name="fileImage">
+        </div>
+
+
+        <div class="divider-btn">
+            <button type="submit" class="form-btn form-btn--sm">Submit</button>
+            <button type="button" class="btn btn-secondary" style="padding: 10px 16px;margin-left: 20px;"
+                    id="btn-cancel" name="btn-cancel-form">Cancel
+            </button>
+        </div>
+    </form>
+
+
+</div>
+
+
+
+
+<footer th:replace="fragments::footer"></footer>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head ></head>
+<body>
+
+<div th:fragment="content" class="container mt-3">
+
+
+    <div class="row" id="image-container"  style="display: flex;align-items: center;justify-content: center">
+
+        <div class="col-6 col-sm-12  mb-3 image-wrapper" >
+            <label for="" class="form-label">Product main image:</label>
+            <img th:src="@{${product.mainImagePath}}" class="img-thumb img-thumb--xl"  id="image-thumb">
+        </div>
+
+
+        <div th:each="extraImg,count : ${product.images}" class="col-6 col-sm-12  mb-3 image-wrapper ml-2" th:id="'divExtraImage'+${count.index}" >
+            <label for="" class="form-label" th:id="'labelHeaderImageExtra'+${count.index}">Product extra image #[[${count.count}]]:</label>
+            <img th:src="@{${extraImg.extraImagePath}}" class="img-thumb img-thumb--xl" th:id="'extra-image-thumb'+${count.index}">
+        </div>
+
+
+
+
+    </div>
+
+
+
+</div>
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments:: head('Customer management','none')">
+</head>
+<body>
+
+<div th:replace="navigation :: content('/customers',true)"></div>
+
+
+<div class="container-fluid mt-5">
+
+    <div class="actions">
+        &nbsp;
+        <a th:href="@{/customers/export_csv}" title="Export to CSV"><i class="fa-solid fa-file-csv"></i></a> &nbsp;&nbsp;
+        <a th:href="@{/customers/export_excel}" title="Export to EXCEL"><i class="fa-solid fa-file-excel"></i></a> &nbsp;
+    </div>
+    <div>
+        <div th:if="${message_success}" class="alert alert-success text-center" role="alert">
+            [[${message_success}]]
+        </div>
+        <div th:if="${message_error}" class="alert alert-danger text-center" role="alert">
+            [[${message_error}]]
+        </div>
+    </div>
+
+    <div>
+        <h2 class="mt-3 mb-3 text-heading-lg">Customer listing page</h2>
+
+        <table class="table hidden-table ">
+            <thead>
+            <tr class="table-primary">
+                <th th:replace="fragments :: column_link('/customers','id','Customer ID','hidden-col')"></th>
+                <th>Avatar</th>
+                <th th:replace="fragments :: column_link('/customers','email','Email','none')"></th>
+                <th th:replace="fragments :: column_link('/customers','firstName','First name','hidden-col')"></th>
+                <th th:replace="fragments :: column_link('/customers','lastName','Last name','hidden-col')"></th>
+                <th>Phone number</th>
+                <th>Address</th>
+                <th th:replace="fragments :: column_link('/customers','enabled','Enabled','none')"></th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="customer : ${list}">
+                <th class="hidden-col" scope="row">[[${customer.id}]]</th>
+                <td>
+                    <img th:src="@{${customer.imagePath}}" class="img-thumb">
+                </td>
+                <td>[[${customer.email}]]</td>
+                <td class="hidden-col">[[${customer.firstName}]]</td>
+                <td class="hidden-col">[[${customer.lastName}]]</td>
+                <td class="hidden-col">[[${customer.phoneNumber}]]</td>
+                <td class="hidden-col">[[${customer.address}]]</td>
+                <td>
+                    <a style="text-decoration: none" th:href="@{'/customers/' + ${customer.id} + '/enabled/'+${!customer.enabled}}"
+                       th:class="${customer.enabled ? 'fa-regular fa-circle-check btn-green' : 'fa-regular fa-circle-xmark btn-red'}"> </a>
+                <td>
+                    <a th:href="@{'/customers/edit/' + ${customer.id}}" title="edit this customer"><i
+                            class="fa-solid fa-file-pen action-edit"></i></a> &nbsp;&nbsp;
+                    <a th:href="@{'/customers/delete/' + ${customer.id}}" title="delete this customer" th:customerId="${customer.id}"
+                       class="btn-delete"><i class="fa-regular fa-trash-can action-delete"></i></a>
+                </td>
+            </tr>
+
+            </tbody>
+        </table>
+
+        <div class="show-info-sm">
+            <div th:each="customer : ${list}">
+                <div style="display: flex;border-bottom: 1px solid #b4a3a3;padding:10px 0">
+                    <img th:src="@{${customer.imagePath}}" class="img-thumb">
+                    <div style="margin-left: 20px;">
+                        <h4>[[${customer.fullName}]]</h4>
+                        <p>Enabled: <a style="text-decoration: none"
+                                       th:href="@{'/customers/' + ${customer.id} + '/enabled/'+${!customer.enabled}}"
+                                       th:class="${customer.enabled ? 'fa-regular fa-circle-check btn-green' : 'fa-regular fa-circle-xmark btn-red'}"> </a>
+                        </p>
+                        <p><a th:href="@{'/customers/edit/' + ${customer.id}}" title="edit this customer"><i
+                                class="fa-solid fa-file-pen action-edit"></i></a> &nbsp;&nbsp;
+                            <a th:href="@{'/customers/delete/' + ${customer.id}}" title="delete this customer"
+                               th:customerId="${customer.id}" class="btn-delete"><i
+                                    class="fa-regular fa-trash-can action-delete"></i></a></p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <div th:replace="fragments::pagination('/customers','customers')"></div>
+    </div>
+
+
+</div>
+
+
+<div th:replace="fragments :: modal_option"></div>
+
+<footer th:replace="fragments::footer"></footer>
+
+<script th:src="@{/js/common_form.js}"></script>
+<script>
+    var entityName = "customer";
+    var entityNameID = "customerId";
+
+
+</script>
+
+</body>
+</html>

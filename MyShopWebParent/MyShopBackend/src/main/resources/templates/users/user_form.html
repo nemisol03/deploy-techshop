@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments :: head(${pageTitle},'none')"></head>
+<body class="bg-main">
+<div th:replace="navigation :: content('/users',false)"></div>
+
+<div class="container">
+
+    <form th:action="@{/users/save}" th:object="${user}" method="post" class="form form--lg" enctype="multipart/form-data" onsubmit="return checkUnique(this)">
+            <h3 class="form-heading">[[${pageTitle}]]</h3>
+        <input type="hidden" th:field="*{id}">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First name</label>
+                <input type="text" class="form-control"  placeholder="Eg: Doe" th:field="*{firstName}" required>
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last name</label>
+                <input type="text" class="form-control"  placeholder="Eg: John" th:field="*{lastName}" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control"  placeholder="Email address..." th:field="*{email}" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control"  th:field="*{password}"
+                       th:placeholder="${user.id!=null ?'Leave blank - if you do not want to change the password':'Your password'}"
+                       th:required="${user.id==null}"
+                >
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Roles:</label>
+                <th:block th:each="role: ${roles}">
+                    <div class="mb-3 form-check">
+                        <input type="checkbox" class="form-check-input" th:value="${role.id}" th:id="'role-' + ${role.id}" th:field="*{roles}">
+                        <label class="form-check-label" th:for="'role-' + ${role.id}"> [[${role.name}]] - <small>[[${role.description}]]</small>  </label>
+                    </div>
+                </th:block>
+            </div>
+
+        <div class="mb-3 ">
+            <label  class="form-label">Enabled:</label> <br>
+            <div class="mb-3 form-check ml-3">
+            <input type="checkbox" class="form-check-input" th:field="*{enabled}" >
+            <label class="form-check-label" for="enabled">Enabled</label>
+            </div>
+        </div>
+        <div class="mb-3">
+            <input type="hidden" th:field="*{photo}">
+            <label for="password" class="form-label">Avatar:</label>
+            <input type="file" class="form-control" id="thumb" name="fileImage"  >
+
+            <div class="img_thumb-container">
+                <img th:src="@{${user.imagePath}}" alt="preview avatar" class="img-thumb" id="image-thumb">
+            </div>
+        </div>
+
+
+           <div class="divider-btn">
+               <button type="submit" class="form-btn form-btn--sm">Submit</button>
+               <button type="button" class="btn btn-secondary" style="padding: 10px 16px;margin-left: 20px;" id="btn-cancel">Cancel</button>
+           </div>
+
+
+        </form>
+</div>
+
+
+<div th:replace="fragments :: modal_notify"></div>
+
+<footer th:replace="fragments::footer"></footer>
+<script th:src="@{/js/common_form.js}"></script>
+
+<script>
+    var contextPath = "[[@{/}]]";
+    var currentLocation =  "[[@{/users}]]";
+
+
+
+    function checkUnique(form) {
+        url = contextPath + "users/check_unique";
+        userId = $('#id').val();
+        userEmail = $('#email').val();
+        csrfValue = $('input[name="_csrf"]').val();
+        params = {id:userId,email: userEmail,_csrf: csrfValue};
+        $.post(url,params,function (response) {
+            if(response ==='OK') {
+                form.submit();
+            }else if(response ==='duplicated'){
+                showModalNotify("Warning","This email already exists, please choose another email");
+            }else {
+                showModalNotify("Warning","Something went wrong!");
+
+            }
+
+        }).fail(function () {
+            showModalNotify("Error","Couldn't connect to server ! ");
+        })
+        return false;
+    }
+
+
+
+</script>
+</body>
+</html>

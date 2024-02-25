@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: head(${pageTitle},'none')"></head>
+<body>
+
+<div th:fragment="content" class="container mt-3">
+
+
+<div  sec:authorize="hasAnyAuthority('Admin','Editor')">
+    <div id="divAllDetails">
+        <th:block th:if="${product.id == null}">
+
+            <div class="mb-3 row" id="divDetailElement0">
+                <div class="col-md-6">
+                    <label for="" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="" name="nameDetails">
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">Value</label>
+                    <input type="text" class="form-control" name="valueDetails" >
+                </div>
+                <input type="hidden" name="detailIDs" value="0">
+            </div>
+        </th:block>
+        <th:block th:if="${product.id != null}" th:each="detail,count : ${product.details}">
+            <div class="mb-3 row" th:id="'divDetailElement'+${count.index}">
+                <div class="col-md-6">
+                    <label for="" class="form-label">Name</label>
+                    <input type="text" class="form-control" id="" name="nameDetails" th:value="${detail.name}">
+                </div>
+                <div class="col-md-6">
+                    <label for="" class="form-label">Value</label>
+                    <input type="text" class="form-control" name="valueDetails" th:value="${detail.value}" >
+                </div>
+                <input type="hidden" name="detailIDs" th:value="${detail.id}">
+
+            </div>
+
+
+        </th:block>
+
+
+    </div>
+
+    <button type="button" class="btn btn-primary" id="add-new-details"> Add new details</button>
+</div>
+
+    <div sec:authorize="hasAuthority('Salesperson')">
+        <div th:replace="products/details_section_readonly :: content"></div>
+
+    </div>
+
+
+
+
+
+    <div class="divider-btn">
+        <button type="submit" class="form-btn form-btn--sm">Submit</button>
+        <button type="button" class="btn btn-secondary" style="padding: 10px 16px;margin-left: 20px;" id="btn-cancel"
+                name="btn-cancel-form">Cancel
+        </button>
+    </div>
+
+
+</div>
+
+
+<div th:replace="fragments :: modal_notify"></div>
+
+<footer th:replace="fragments::footer"></footer>
+<script th:src="@{/js/common_form.js}"></script>
+<script>
+    var contextPath = "[[@{/}]]";
+    var currentLocation = "[[@{/products}]]";
+    var csrfValue = "[[${_csrf.token}]]"
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404</title>
+  <link rel="stylesheet" th:href="@{/css/main.css }">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body class="bg-main" >
+    <div style="display: flex;align-items: center;justify-content: center;flex-direction: column;min-height: 100vh">
+      <h1 style="font-size: 120px">404</h1>
+      <p style="background-color: #fff;padding:10px 30px;color: #000"> Opps! Page not found</p>
+      <span style="text-align: center">The page you were looking for doesn't exist.<br>You may have mistyped the address or the page may have moved</span>
+      <a th:href="@{/}" class=" form-btn form-btn--md text-center mt-3" style="text-decoration: none" >Back to website</a>
+    </div>
+
+</body>
+</html>

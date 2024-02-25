@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head th:replace="fragments :: head(${pageTitle},'none')"></head>
+<body class="bg-main">
+<div th:replace="navigation :: content('/users',false)"></div>
+
+<div class="container">
+
+    <form th:action="@{/account/save}" th:object="${user}" method="post" class="form form--lg" enctype="multipart/form-data">
+            <h3 class="form-heading">[[${pageTitle}]]</h3>
+        <div>
+            <div th:if="${message_success}" class="alert alert-success text-center" role="alert">
+                [[${message_success}]]
+            </div>
+
+        </div>
+        <input type="hidden" th:field="*{id}">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First name</label>
+                <input type="text" class="form-control"  placeholder="Eg: Doe" th:field="*{firstName}" required>
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last name</label>
+                <input type="text" class="form-control"  placeholder="Eg: John" th:field="*{lastName}" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email- <small>Note that:you can't edit the email</small> </label>
+                <input type="email" class="form-control"  placeholder="Email address..." th:field="*{email}" readonly title="readonly">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password:</label>
+                <input type="password" class="form-control"  th:field="*{password}"
+                       th:placeholder="${user.id!=null ?'Leave blank - if you do not want to change the password':'Your password'}"
+                       th:required="${user.id==null}"
+                >
+            </div>
+            <div class="mb-3">
+                <label  class="form-label">Roles:</label>
+                <span>[[${user.roles}]]</span>
+            </div>
+        <div class="mb-3">
+            <input type="hidden" th:field="*{photo}">
+            <label for="password" class="form-label">Avatar:</label>
+            <input type="file" class="form-control" id="thumb" name="fileImage"  >
+
+            <divc class="img_thumb-container">
+                <img th:src="@{${user.imagePath}}" alt="preview avatar" class="img-thumb" id="image-thumb">
+            </divc>
+        </div>
+
+
+           <div class="divider-btn">
+               <button type="submit" class="form-btn form-btn--sm">Save</button>
+               <button type="button" class="btn btn-secondary" style="padding: 10px 16px;margin-left: 20px;" id="btn-cancel">Cancel</button>
+           </div>
+
+
+        </form>
+</div>
+
+
+<div th:replace="fragments :: modal_notify"></div>
+
+<footer th:replace="fragments::footer"></footer>
+<script th:src="@{/js/common_form.js}"></script>
+
+<script>
+    var contextPath = "[[@{/}]]";
+    var currentLocation =  "[[@{/}]]";
+
+</script>
+</body>
+</html>

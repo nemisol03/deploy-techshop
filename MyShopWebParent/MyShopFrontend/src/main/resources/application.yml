@@ -1,0 +1,44 @@
+server:
+  port: 80
+#  servlet:
+#    context-path: /MyShop
+
+spring:
+  main:
+    allow-circular-references: true
+  datasource:
+    hikari:
+      minimum-idle: 1
+      maximum-pool-size: 2
+    url: jdbc:mysql://db-tech-shop.c1uyawmgs9mn.ap-southeast-1.rds.amazonaws.com:3306/techshop
+    username: root
+    password: nam25012003
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+     hibernate:
+       dialect: org.hibernate.dialect.MySQL8Dialect
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: 178873387617-sgltsqq1drpsqci8eb8odo337fhli8me.apps.googleusercontent.com
+            client-secret: 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
+            scope:
+              - email
+              - profile
+          facebook:
+            client-id: 360945173498026
+            client-secret: e73cb89af9a2a412631fd64a9ad5da85
+            scope:
+              - email
+              - public_profile
+          github:
+            client-id: 940603340790997
+            client-secret: c086c10e01a92f422aff0e71fe9a1c8c
+            scope:
+              - read:user
+              - user:email

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>500 - Oops! Something Went Wrong</title>
+  <link rel="stylesheet" th:href="@{/css/main.css }">
+  <link rel="stylesheet" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body class="bg-main">
+<div style="display: flex; align-items: center; justify-content: center; flex-direction: column; min-height: 100vh">
+  <h1 style="font-size: 120px">500</h1>
+  <p style="background-color: #fff; padding: 10px 30px; color: #000"> Oops! Something Went Wrong</p>
+  <span style="text-align: center">We're sorry, but it seems there was an issue on our end.<br>Our team has been notified, and we're working to fix it.<br>Please try again later.</span>
+  <a th:href="@{/}" class="form-btn form-btn--md text-center mt-3" style="text-decoration: none">Back to website</a>
+</div>
+</body>
+</html>

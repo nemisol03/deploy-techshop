@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragments :: head(${pageTitle},'none')"></head>
+<body>
+<div th:replace="navigation :: content('/products',true)"></div>
+
+<div th:fragment="content" class="container mt-3">
+
+<th:block sec:authorize="hasAnyAuthority('Admin','Editor')">
+
+    <div class="row" id="image-container">
+
+        <div class="col-6  mb-3 image-wrapper" >
+            <input type="hidden" th:field="*{mainImage}">
+            <label for="" class="form-label">Product main image:</label>
+            <img th:src="@{${product.mainImagePath}}" class="img-thumb img-thumb--xl"  id="image-thumb">
+            <input type="file" class="form-control mt-2" id="thumb" name="fileImage"  >
+        </div>
+    <th:block th:if="${product.images.size ==0}">
+        <div class="col-6  mb-3 image-wrapper ml-2" id="divExtraImage0" >
+            <label for="" class="form-label" id="labelHeaderImageExtra0">Product extra image #1:</label>
+            <img th:src="@{/images/no-image.jpg}" class="img-thumb img-thumb--xl" id="extra-image-thumb0">
+            <input type="file" class="form-control mt-2" name="extrasFileImage"  >
+        </div>
+
+    </th:block>
+
+
+    <th:block th:if="${product.images.size >0}">
+        <div th:each="extraImg,count : ${product.images}" class="col-6  mb-3 image-wrapper ml-2" th:id="'divExtraImage'+${count.index}" >
+            <label for="" class="form-label" th:id="'labelHeaderImageExtra'+${count.index}">Product extra image #[[${count.count}]]:</label>
+            <img th:src="@{${extraImg.extraImagePath}}" class="img-thumb img-thumb--xl" th:id="'extra-image-thumb'+${count.index}">
+            <input type="file" class="form-control mt-2" name="extrasFileImage"  >
+
+            <input type="hidden" name="imageIDs" th:value="${extraImg.id}" th:id="'imageId'+${count.index}" >
+            <input type="hidden" name="imageNames" th:value="${extraImg.name}" th:id="'imageName' + ${count.index}">
+        </div>
+
+        <div class="col-6  mb-3 image-wrapper ml-2" th:id="'divExtraImage'+${product.images.size}" >
+            <label for="" class="form-label" th:id="'labelHeaderImageExtra'+${product.images.size}">Product extra image #[[${product.images.size +1}]]:</label>
+            <img th:src="@{/images/no-image.jpg}" class="img-thumb img-thumb--xl" th:id="'extra-image-thumb'+${product.images.size}">
+            <input type="file" class="form-control mt-2" name="extrasFileImage"  >
+        </div>
+
+    </th:block>
+
+    </div>
+
+</th:block>
+    <th:block sec:authorize="hasAnyAuthority('Salesperson')">
+
+<div th:replace="products/images_section_readonly"></div>
+
+    </th:block>
+
+
+
+    <div class="divider-btn">
+            <button type="submit" class="form-btn form-btn--sm">Submit</button>
+            <button type="button" class="btn btn-secondary" style="padding: 10px 16px;margin-left: 20px;" id="btn-cancel" name="btn-cancel-form">Cancel</button>
+        </div>
+
+
+
+</div>
+
+
+
+
+<script>
+    var contextPath = "[[@{/}]]";
+    var currentLocation = "[[@{/products}]]";
+    var csrfValue = "[[${_csrf.token}]]"
+
+
+
+</script>
+</body>
+</html>

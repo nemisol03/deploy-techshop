@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <head th:replace="fragments:: head('Shopping cart','tag')"> </head>
+    <script th:src="@{/js/number_format.min.js}"></script>
+</head>
+<body class="bg-main">
+<div th:replace="navigation ::content('none',false)"></div>
+
+
+<!-- product detail -->
+
+<div class="container product-detail">
+    <div class="row">
+
+        <div class="col-md-10 " th:unless="${#lists.isEmpty(cartItemList)}">
+            <h2 class="order-header heading-topic heading-topic-sm" >Your shopping cart</h2>
+            <div>
+                <h3>Address which you can receive your items:</h3>
+                <p>[[${shippingAddress}]] <a th:href="@{/address_book}" class="text-success fw-medium">[ Choose another address ]</a></p>
+
+            </div>
+
+            <table class="table table-order">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Image</th>
+                    <th>Product name</th>
+                    <th>Price</th>
+                    <th>Sub total</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item,iterStat : ${cartItemList}" th:id="'row-'+${iterStat.count}">
+                    <th scope="row">[[${iterStat.count}]] </th>
+                    <td>
+                        <img th:src="@{${item.product.mainImagePath}}" class="product-order-img" alt="">
+                    </td>
+                      <td>   <a th:href="@{'/p/'+${item.product.id}+'/view_detail'}" class="product-link">  [[${item.product.shortName}]]</a>
+                        <div th:replace="fragments :: quantityControl(${item.quantity},${item.product.id})"></div>
+                      </td>
+                    <td>[[${item.product.priceWithDiscountPercent}]] $</td>
+                    <td th:id="'sub-total'+ ${item.product.id}" class="sub-total">[[${item.subTotal}]] $</td>
+                    <td class="text-center">
+                        <a href="" th:id="'remove-cart-item'+ ${item.id}" th:rowNumber = "${iterStat.count}" class="action-delete fa-regular fa-trash-can" title="remove this item"></a>
+                    </td>
+                </tr>
+
+
+                </tbody>
+            </table>
+            <span class="total-cost">Total: [[${costTotal}]]</span>
+
+            <a th:href="@{/checkout}" class="btn btn-primary " style=" float: right;margin-top: 30px;"> Check out</a>
+        </div>
+
+
+        <div th:if="${#lists.isEmpty(cartItemList)}" class="heading-topic text-center">
+            Your shopping cart is empty
+        </div>
+
+
+    </div>
+
+</div>
+<div th:replace="fragments:: modal_notify"></div>
+<footer th:replace="fragments:: footer"></footer>
+
+<script>
+    $(document).ready(function () {
+        $('.btn-plus-quantity').on('click', function () {
+            productId = $(this).attr("pid")
+            productQuantity = $('#product-quantity' + productId);
+            quantityInt = parseInt(productQuantity.val());
+
+            if(quantityInt >=10) {
+                showModalNotify('Error','The quantity of product must be less than or equal 10');
+            }else {
+
+                productQuantity.val(quantityInt + 1);
+                updateQuantity(productQuantity,productId);
+            }
+
+        })
+        $('.btn-minus-quantity').on('click', function () {
+            productId = $(this).attr("pid")
+            productQuantity = $('#product-quantity' + productId);
+            quantityInt = parseInt(productQuantity.val());
+            if(quantityInt <=1) {
+                showModalNotify('Error','The quantity of product must be greater than or equal 1');
+
+            }else {
+                productQuantity.val(quantityInt - 1);
+                updateQuantity(productQuantity,productId);
+
+            }
+        })
+        contextPath = "[[@{/}]]";
+        csrfValue = "[[${_csrf.token}]]"
+        csrfHeader = "[[${_csrf.headerName}]]"
+
+        $('.action-delete').each(function(index,btnRemove) {
+            $(this).on('click',function(e) {
+                e.preventDefault();
+                removeCartItem(this);
+            })
+        })
+
+
+
+    })
+
+
+
+    function removeCartItem(remove) {
+        removeElement = $(remove).attr("id");
+        id = removeElement.match(/\d+/)
+        url = contextPath + "cart/remove/"+id;
+        $.ajax({
+            type: 'delete',
+            url : url,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader(csrfHeader,csrfValue)
+            }
+
+        }).done(function () {
+            rowId = $(remove).attr("rowNumber")
+            $('#row-'+rowId).remove();
+            updateTotal();
+        })
+
+    }
+</script>
+<script th:src="@{/js/shopping_cart.js}"></script>
+
+
+
+</body>
+</html>

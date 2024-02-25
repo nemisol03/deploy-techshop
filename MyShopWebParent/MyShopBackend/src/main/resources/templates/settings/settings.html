@@ -1,0 +1,87 @@
+ <!DOCTYPE html>
+<html lang="en"  xmlns:th="https://www.thymeleaf.org" >
+ <head>
+     <head th:replace="fragments :: head('Setting','tag')"></head>
+     <link rel="stylesheet" th:href="@{/css/richtext.min.css}">
+     <script th:src="@{/js/jquery.richtext.min.js}"></script>
+ </head>
+<body >
+
+<div th:replace="navigation :: content('/settings',false)"></div>
+
+
+
+<div class="container mt-3">
+
+
+    <div class="form form--xxl">
+        <h3 class="form-heading">[[${pageTitle}]]</h3>
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="general-tab" data-bs-toggle="tab"
+                        data-bs-target="#general-tab-pane" type="button" role="tab"
+                        aria-controls="general-tab-pane" aria-selected="true">General
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="mail-server-tab" data-bs-toggle="tab"
+                        data-bs-target="#mail-server-tab-pane" type="button" role="tab"
+                        aria-controls="mail-server-tab-pane" aria-selected="false">Mail server
+                </button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="mail-template-tab" data-bs-toggle="tab" data-bs-target="#mail-template-tab-pane"
+                        type="button" role="tab" aria-controls="mail-template-tab-pane" aria-selected="false">Mail template
+                </button>
+            </li>
+
+        </ul>
+        <div class="tab-content" id="myTabContent">
+
+            <div class="tab-pane fade show active" id="general-tab-pane" role="tabpanel"
+                 aria-labelledby="general-tab" tabindex="0">
+                <div th:replace="settings/general_section :: content"> </div>
+            </div>
+            <div class="tab-pane fade" id="mail-server-tab-pane" role="tabpanel" aria-labelledby="mail-server-tab"
+                 tabindex="0">
+                <div th:replace="settings/mail_server_section :: content"> </div>
+            </div>
+            <div class="tab-pane fade" id="mail-template-tab-pane" role="tabpanel" aria-labelledby="mail-template-tab"
+                 tabindex="0">
+                <div th:replace="settings/mail_template_section :: content"> </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    </div>
+</div>
+
+
+
+<div th:replace="fragments :: modal_option"></div>
+<div  class="modal fade" id="modal-view-details" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+<div th:replace="fragments :: modal_notify"></div>
+
+
+<footer th:replace="fragments::footer"></footer>
+
+
+<script th:src="@{/js/common_form.js}"></script>
+    <script>
+        var contextPath = "[[@{/}]]";
+        var currentLocation = "[[@{/}]]";
+        var csrfValue = "[[${_csrf.token}]]";
+        $('#customer-verify-content').richText();
+
+    </script>
+
+</body>
+</html>
