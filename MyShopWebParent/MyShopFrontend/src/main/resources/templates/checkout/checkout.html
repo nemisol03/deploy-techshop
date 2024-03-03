@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="https://www.thymeleaf.org">
 <head>
-    <head th:replace="fragments:: head('Shopping cart','tag')"> </head>
+    <head th:replace="fragments:: head('Shopping cart','tag')"></head>
     <script th:src="@{/js/number_format.min.js}"></script>
 </head>
 <body class="bg-main">
@@ -13,19 +13,31 @@
 <div class="container product-detail">
     <div class="row">
 
-        <div class="" >
-            <h2 class="order-header heading-topic heading-topic-sm" >Check out </h2>
+        <div class="">
+            <h2 class="order-header heading-topic heading-topic-sm">Check out </h2>
             <div><h3>Your address which you can be received your items</h3>
-            <p>[[${shippingAddress}]]</p>
+                <p>[[${shippingAddress}]]</p>
                 <a th:href="@{/address_book}">Choose another address</a>
             </div>
 
-            <div>
-                <h2>Payment method</h2>
-                <div><input type="radio" name="payment_method"> COD (Cash on delivery)</div>
+            <h2>Payment method</h2>
+            <form th:action="@{/orders/place_order}" method="post" class="d-flex justify-content-between align-items-center mb-3" style="max-width: 600px">
+                <input type="radio" name="payment_method" value="COD" required> COD (Cash on delivery)
+                <button type="submit" class="btn btn-primary " style=" "> Buy</button>
+            </form>
+
+            <div >
+                <div class="border-top " style="border-width: 50%"></div>
+                <p class="text-center">OR</p>
+                <div id="paypal-button-container">
+
+                </div>
+                <form th:action="@{/orders/process_paypal_order}" method="post" id="paypalForm">
+                    <input type="hidden" name="orderId" id="orderId"  />
+                    <input type="hidden" name="payment_method" value="PAYPAL">
+                </form>
             </div>
 
-            <button class="btn btn-primary " style=" float: right;margin-top: 30px;"> Confirm buy</button>
         </div>
 
     </div>
@@ -35,7 +47,72 @@
 <footer th:replace="fragments:: footer"></footer>
 
 
+<script th:src="@{https://www.paypal.com/sdk/js(client-id=${paypalClientId},currency='USD')}"></script>
 
+
+<script type="text/javascript">
+   $(document).ready(function() {
+       function validateOrder(orderId) {
+           $('#orderId').val(orderId);
+           $('#paypalForm').submit();
+       }
+
+
+
+
+
+       paypal.Buttons({
+           enableStandardCardFields: true,
+           createOrder: function (data, actions) {
+               //      set up a transaction
+               return actions.order.create({
+                   intent: 'CAPTURE',
+                   payer: {
+                       name: {
+                           given_name: "[[${customer.firstName}]]",
+                           surname: "[[${customer.lastName}]]",
+
+                       },
+                       address: {
+                           address_line_1: "[[${customer.address}]]",
+                           country_code: "VN"
+                       },
+                       email_address: "[[${customer.email}]]",
+                       phone: {
+                           phone_type: "MOBILE",
+                           phone_number: {
+                               national_number: "[[${customer.phoneNumber}]]"
+                           }
+                       }
+                   },
+                   purchase_units: [{
+                       amount: {
+                           value: "[[${totalFormated}]]",
+                           currency_code: "USD"
+                       }
+                   }],
+                   application_context: {
+                       shipping_preference: "NO_SHIPPING"
+                   }
+               })
+           },
+           onApprove: function (data, actions) {
+               return actions.order.capture().then(function (details) {
+                   orderId = details.id;
+                   validateOrder(orderId);
+               })
+           },
+           onCancel: function (data) {
+
+           },
+           onError: function (data) {
+               alert("Something went wrong!");
+           }
+
+
+       }).render("#paypal-button-container");
+   })
+</script>
 
 
 </body>

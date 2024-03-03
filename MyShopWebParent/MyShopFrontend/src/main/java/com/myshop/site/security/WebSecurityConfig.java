@@ -54,7 +54,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .successHandler(oAuth2LoginSuccessHandler)
                 .and().logout()
-                .and().rememberMe().tokenValiditySeconds(7 * 24 * 60 * 60).key("abcdakljsdlflsajfl");
+                .and().rememberMe().userDetailsService(userDetailService())
+                .tokenValiditySeconds(7 * 24 * 60 * 60).key("abcdakljsdlflassdssdsajfl");
     }
 
 

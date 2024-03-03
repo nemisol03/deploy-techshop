@@ -42,3 +42,10 @@ spring:
             scope:
               - read:user
               - user:email
+
+app:
+  payment:
+    paypal:
+      baseURL: https://sandbox.paypal.com
+      client-id: AaTPWUAZ4PVzSFWouRPhdu8z_IwZNxIknecfvN_niVV9rvMePOc7g4WlJU2YUC6PDZiormRkp_JLpMB5
+      client-secret: EFFX6gtn-jNGBi0Q9FNVwYH4VvrfvRdqpt7-uZO25Eirsm-yq_hEqG6Eo0NotlvwaZP-PhQgCRNlCWSM

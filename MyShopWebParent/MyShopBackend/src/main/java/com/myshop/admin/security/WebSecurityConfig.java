@@ -44,7 +44,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin().loginPage("/login").usernameParameter("email").defaultSuccessUrl("/", true).permitAll()
                 .and().logout()
-                .and().rememberMe().tokenValiditySeconds(7 * 24 * 60 * 60).key("abcdakljsdlflsajfl");
+                .and().rememberMe().tokenValiditySeconds(7 * 24 * 60 * 60).key("abcdakljsdlflsajfl").userDetailsService(userDetailsService());
     }
 
     public DaoAuthenticationProvider authenticationProvider() {

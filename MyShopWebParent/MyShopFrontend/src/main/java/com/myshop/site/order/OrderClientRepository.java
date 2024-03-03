@@ -5,6 +5,7 @@ import com.myshop.common.entity.Order;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
 public interface OrderClientRepository extends JpaRepository<Order,Long> {
@@ -14,7 +15,8 @@ public interface OrderClientRepository extends JpaRepository<Order,Long> {
             "o.customer.lastName like ?1 ) ")
     Page<Order> search(String keyword,Integer customerId,Pageable pageable);
 
-//    @Query("select o from Order o where o.customer.id = ?2")
-//    Page<Order> findAllByCus(Pageable pageable,Integer customerId);
     Page<Order> findAllByCustomer(Pageable pageable, Customer customer);
+
+
+
 }

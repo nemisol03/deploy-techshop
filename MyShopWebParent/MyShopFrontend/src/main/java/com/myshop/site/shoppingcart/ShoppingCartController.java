@@ -31,17 +31,13 @@ public class ShoppingCartController {
     @Autowired private ShoppingCartService cartService;
     @Autowired private CustomerService customerService;
 
-    @Autowired private AddressService addressService;
     @GetMapping("")
     public String listAll(Model model)  {
 
         List<CartItem> cartItemList = null;
         try {
             cartItemList = cartService.listCartItem(getAuthenticatedCustomer());
-            Customer customer = Utility.getCustomerLoggedIn(customerService );
-            Address defaultAddress = addressService.getDefaultAddress(customer);
-            String shippingAddress = defaultAddress!=null ? defaultAddress.toString() : customer.getFullAddress();
-            model.addAttribute("shippingAddress",shippingAddress);
+
         model.addAttribute("cartItemList",cartItemList);
         } catch (CustomerNotFoundException e) {
             return "/login";

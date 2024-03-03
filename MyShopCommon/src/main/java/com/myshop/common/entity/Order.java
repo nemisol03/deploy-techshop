@@ -38,6 +38,7 @@ public class Order {
 
     private OrderStatus status;
 
+
     @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
@@ -134,4 +135,5 @@ public class Order {
     public void setOrderDetails(Set<OrderDetail> orderDetails) {
         this.orderDetails = orderDetails;
     }
+
 }

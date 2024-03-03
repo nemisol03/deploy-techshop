@@ -26,47 +26,5 @@ public class CheckoutService {
     private ShoppingCartService cartService;
 
 
-    public void saveOrder(Customer customer) {
-        Order order = new Order();
-        List<CartItem> cartItemList = cartService.listCartItem(customer);
-        float costTotal = 0;
-        Set<OrderDetail> orderDetails = new HashSet<>();
 
-        for (var item : cartItemList) {
-            Product product = item.getProduct();
-            OrderDetail orderDetail = new OrderDetail();
-            orderDetail.setOrder(order);
-            orderDetail.setProduct(product);
-            orderDetail.setQuantity(item.getQuantity());
-            orderDetail.setSubtotal(item.getSubTotal());
-            orderDetail.setProductCost(product.getPrice() * item.getQuantity());
-            costTotal += item.getSubTotal();
-            orderDetails.add(orderDetail);
-        }
-
-        Address defaultAddress = addressService.getDefaultAddress(customer);
-        if (defaultAddress != null) {
-            order.setFirstName(defaultAddress.getFirstName());
-            order.setLastName(defaultAddress.getLastName());
-            order.setPhoneNumber(defaultAddress.getPhoneNumber());
-            order.setAddress(defaultAddress.getAddress());
-        } else {
-            order.setFirstName(customer.getFirstName());
-            order.setLastName(customer.getLastName());
-            order.setPhoneNumber(customer.getPhoneNumber());
-            order.setAddress(customer.getAddress());
-        }
-
-
-
-        order.setTotal(costTotal);
-        order.setStatus(OrderStatus.NEW);
-        order.setCustomer(customer);
-        order.setOrderDetails(orderDetails);
-
-        order.setPaymentMethod(PaymentMethod.COD);
-        cartService.deleteByCustomer(customer);
-        orderRepo.save(order);
-
-    }
 }
