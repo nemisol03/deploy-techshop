@@ -4,28 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="377d3ae7-3cd0-42a8-acb0-7e40f972d135" name="Changes" comment="add Dockerfile">
-      <change afterPath="$PROJECT_DIR$/MyShopCommon/src/main/java/com/myshop/common/exception/ApiPaypalException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/checkout/paypal/PaypalOrderResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/checkout/paypal/PaypalService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/test/java/com/myshop/site/PayPalAPITests.java" afterDir="false" />
+    <list default="true" id="377d3ae7-3cd0-42a8-acb0-7e40f972d135" name="Changes" comment="add paypal payment method">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/0caebc48-bbe9-4c22-9016-191dc9aaf8ac.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/0caebc48-bbe9-4c22-9016-191dc9aaf8ac.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopCommon/src/main/java/com/myshop/common/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopCommon/src/main/java/com/myshop/common/entity/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopCommon/src/main/java/com/myshop/common/entity/OrderStatus.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopCommon/src/main/java/com/myshop/common/entity/OrderStatus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopCommon/src/main/java/com/myshop/common/entity/PaymentMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopCommon/src/main/java/com/myshop/common/entity/PaymentMethod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopBackend/src/main/java/com/myshop/admin/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopBackend/src/main/java/com/myshop/admin/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopBackend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopBackend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/checkout/CheckoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/checkout/CheckoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/checkout/CheckoutService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/checkout/CheckoutService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/order/OrderClientRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/order/OrderClientRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/order/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/order/OrderController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/order/OrderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/order/OrderService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/security/WebSecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/shoppingcart/ShoppingCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/java/com/myshop/site/shoppingcart/ShoppingCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/resources/templates/carts/shopping_cart.html" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/resources/templates/carts/shopping_cart.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/resources/templates/checkout/checkout.html" beforeDir="false" afterPath="$PROJECT_DIR$/MyShopWebParent/MyShopFrontend/src/main/resources/templates/checkout/checkout.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,8 +43,8 @@
   <component name="GithubPullRequestsUISettings">
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="39f5dd47-f7a4-4941-a24f-603e85913318" />
-        <option name="url" value="https://github.com/alchemist-03/tech-shop.git" />
+        <option name="accountId" value="01d7a17e-8e6e-4239-a4a8-feaeea7ac187" />
+        <option name="url" value="https://github.com/nemisol03/deploy-techshop.git" />
       </UrlAndAccount>
     </option>
   </component>
@@ -107,7 +89,7 @@
     "git-widget-placeholder": "master",
     "jdk.selected.JAVA_MODULE": "17",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/workspace/java/tech-shop",
+    "last_opened_file_path": "D:/workspace/java/tech-shop-master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -373,7 +355,9 @@
       <workItem from="1708964989027" duration="356000" />
       <workItem from="1709370770853" duration="2532000" />
       <workItem from="1709420948249" duration="14810000" />
-      <workItem from="1709447529509" duration="10880000" />
+      <workItem from="1709447529509" duration="11796000" />
+      <workItem from="1709507025860" duration="95000" />
+      <workItem from="1709635439982" duration="1051000" />
     </task>
     <task id="LOCAL-00001" summary="push first">
       <created>1695215767212</created>
@@ -422,7 +406,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708842175692</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="add paypal payment method">
+      <option name="closed" value="true" />
+      <created>1709491425507</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1709491425507</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -481,7 +473,8 @@
     <MESSAGE value="add amazon upload image, migrate db to Amazon RDS" />
     <MESSAGE value="prepare for deploy" />
     <MESSAGE value="add Dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="add Dockerfile" />
+    <MESSAGE value="add paypal payment method" />
+    <option name="LAST_COMMIT_MESSAGE" value="add paypal payment method" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

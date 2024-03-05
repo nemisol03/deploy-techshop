@@ -40,7 +40,7 @@ public class ShoppingCartController {
 
         model.addAttribute("cartItemList",cartItemList);
         } catch (CustomerNotFoundException e) {
-            return "/login";
+            return "redirect:/login";
         }
         float costTotal = 0;
         for(var item : cartItemList) {
